@@ -1,0 +1,17 @@
+# dependencies
+node_modules/
+
+# environment variables
+.env
+
+# Stripe CLI
+stripe.exe
+stripe
+
+# logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db

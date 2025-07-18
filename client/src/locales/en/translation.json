@@ -1,0 +1,42 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "joinClub": "Join the Club",
+    "gallery": "Gallery"
+  },
+  "home": {
+    "hero": {
+      "title": "Welcome to Golden Era",
+      "subtitle": "Transform your body, elevate your mind",
+      "cta": "Start Your Journey"
+    }
+  },
+  "programs": {
+    "basic": {
+      "name": "Basic Program",
+      "price": "$99",
+      "features": ["Personalized workout plan", "Weekly check-ins", "Nutrition guide"]
+    },
+    "premium": {
+      "name": "Premium Program", 
+      "price": "$199",
+      "features": ["Everything in Basic", "Daily coaching", "Meal plans", "Video tutorials"]
+    },
+    "elite": {
+      "name": "Elite Program",
+      "price": "$299",
+      "features": ["Everything in Premium", "1-on-1 video calls", "Custom supplements guide", "24/7 support"]
+    }
+  },
+  "payment": {
+    "checkout": "Checkout",
+    "processing": "Processing...",
+    "success": "Payment successful!",
+    "error": "Payment failed",
+    "name": "Full Name",
+    "email": "Email",
+    "card": "Card Details",
+    "confirmationEmail": "Check your email for confirmation"
+  }
+}

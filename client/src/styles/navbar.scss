@@ -1,0 +1,41 @@
+@import "./variables";
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  background: transparent;
+  
+  &.scrolled {
+    @include glassmorphism;
+    background: rgba(0, 0, 0, 0.9);
+  }
+  
+  .navbar-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    letter-spacing: 2px;
+    
+    .golden {
+      color: $golden;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    }
+    
+    .era {
+      color: $white;
+    }
+  }
+}

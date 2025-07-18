@@ -1,0 +1,43 @@
+$golden: #FFD700;
+$black: #000000;
+$white: #FFFFFF;
+$dark-gray: #1a1a1a;
+$light-gray: #f5f5f5;
+
+$golden-gradient: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+$dark-gradient: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+
+$font-primary: "Montserrat", sans-serif;
+$font-secondary: "Roboto", sans-serif;
+
+$mobile: 576px;
+$tablet: 768px;
+$desktop: 1024px;
+$large: 1440px;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin button-style {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@mixin glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
