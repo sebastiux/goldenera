@@ -1,42 +1,134 @@
 {
+  "landing": {
+    "subtitle": "Transform Your Body, Transform Your Life",
+    "enter": "ENTER THE GOLDEN ERA"
+  },
   "nav": {
     "home": "Home",
     "about": "About Us",
-    "joinClub": "Join the Club",
+    "join": "Join the Club",
     "gallery": "Gallery"
   },
   "home": {
     "hero": {
-      "title": "Welcome to Golden Era",
-      "subtitle": "Transform your body, elevate your mind",
-      "cta": "Start Your Journey"
+      "goldenBody": "Golden Body.",
+      "goldenMind": "Golden mind."
+    },
+    "philosophy": {
+      "forgeYourLegacy": "FORGE YOUR LEGACY",
+      "legacy": "We combine ambition with transformation. Through discipline and dedication, Golden Era delivers unmatchable results for those who dare to become successful people.",
+      "philosophyTitle": "Philosophy",
+      "text": "In a world full of weak individuals, strength is what dominates. Transform your body with science. Reclaim your respect. This program is only for those who are ready to become part of the Elite.",
+      "cta": "BEGIN YOUR ERA"
+    },
+    "results": {
+      "guaranteed": "Guaranteed",
+      "guaranteedLine2": "results",
+      "text": "Train with those who lead this world. We only take 50 clients per year. This program is not for everyone, it's only for the ones who dare to become elite. Experience your ideal body in just 60 days."
+    },
+    "coach": {
+      "title": "Your Coach",
+      "name": "Mario H",
+      "description": "Fan of weights, and specialist in calisthenics, and MMA. CEO of Golden Era."
+    },
+    "package": {
+      "title": "This Package includes:",
+      "coaching": {
+        "title": "12 week of personalized coaching",
+        "description": "Designed for athletes and scientists which aim to release the best version of yourself."
+      },
+      "apps": {
+        "title": "Apps designed specifically for you",
+        "description": "Best technology to monitor your progress and enhance your workouts."
+      },
+      "recipes": {
+        "title": "Exclusive recipe book",
+        "description": "Hundreds of recipes easy to make and feeding your body the healthiest way possible."
+      },
+      "merch": {
+        "title": "Merch & Rewards",
+        "description": "Get access to out merch and existing exclusive rewards for our clients. This is to celebrate your commitment to yourself."
+      }
+    },
+    "method": {
+      "title": "Golden Era Method",
+      "description": "Golden Era creates leaders in this world. To become one, the way is not easy, and with us it is possible.",
+      "steps": {
+        "join": {
+          "title": "Join the club",
+          "description": "Subscribe to your exclusive list of clients and begin fulfilling your legacy. Once you've registered and paid for the plan, we'll send you the online material you will be using for the next 12 weeks."
+        },
+        "use": {
+          "title": "Use the material",
+          "description": "Once you have received instructions on how to proceed by your personal coach and your other material, it's time to get to work. Get hustling."
+        },
+        "work": {
+          "title": "Work on you",
+          "description": "Don't forget to use the recipe book designed to help you grow. At the end of the program, you'll be at a better place than where you are now."
+        }
+      },
+      "cta": "GOLDEN ERA"
+    },
+    "whyItWorks": {
+      "title": "Why it works",
+      "description": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
+      "clickCards": "Click on each card to learn more.",
+      "cards": {
+        "exercises": "The right exercises with the correct technique",
+        "adaptable": "Plan adaptable to your body type",
+        "monitor": "Monitor progress to better assist"
+      }
+    },
+    "testimonials": {
+      "title": "Testimonies",
+      "tate": {
+        "quote": "Greatness isn't born; it is achieved through relentless discipline.",
+        "author": "Andrew Tate"
+      },
+      "amades": {
+        "quote": "Your body is your empire. Build it with sweat, not excuses.",
+        "author": "Amades Llanos"
+      },
+      "goggins": {
+        "quote": "The only way you gain mental toughness is to do things you're not happy doing. If you're comfortable, you're not growing.",
+        "author": "David Goggins"
+      }
+    },
+    "partners": {
+      "title": "Our Partners"
+    },
+    "joinElite": {
+      "title": "Join the Elite.",
+      "description": "Reclaim your respect today. Join the elite.",
+      "form": {
+        "name": "Name",
+        "phone": "Phone #",
+        "email": "Email",
+        "submit": "BEGIN YOUR ERA"
+      }
+    },
+    "followUs": {
+      "title": "Follow us",
+      "description": "Stop waiting and start now. Contact us so we can help you get your dream body."
+    },
+    "footer": {
+      "rights": "All rights reserved. Golden Era ®. A United Arab Emirates company."
+    },
+    "motivational": {
+      "buildBody": "Build a body that speaks for you.",
+      "becomeUntouchable": "Become untouchable."
     }
   },
-  "programs": {
-    "basic": {
-      "name": "Basic Program",
-      "price": "$99",
-      "features": ["Personalized workout plan", "Weekly check-ins", "Nutrition guide"]
-    },
-    "premium": {
-      "name": "Premium Program", 
-      "price": "$199",
-      "features": ["Everything in Basic", "Daily coaching", "Meal plans", "Video tutorials"]
-    },
-    "elite": {
-      "name": "Elite Program",
-      "price": "$299",
-      "features": ["Everything in Premium", "1-on-1 video calls", "Custom supplements guide", "24/7 support"]
+
+  "joinElite": {
+      "title": "Join the Elite.",
+      "description": "Reclaim your respect today. Join the elite.",
+      "form": {
+        "name": "Name",
+        "phone": "Phone #",
+        "email": "Email",
+        "submit": "BEGIN YOUR ERA",
+        "successMessage": "Thank you for your interest! We will contact you soon."
+      }
     }
-  },
-  "payment": {
-    "checkout": "Checkout",
-    "processing": "Processing...",
-    "success": "Payment successful!",
-    "error": "Payment failed",
-    "name": "Full Name",
-    "email": "Email",
-    "card": "Card Details",
-    "confirmationEmail": "Check your email for confirmation"
-  }
 }

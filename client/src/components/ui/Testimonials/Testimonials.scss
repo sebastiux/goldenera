@@ -1,0 +1,102 @@
+@import '../../../styles/variables';
+
+.testimonials-section {
+  padding: 80px 0;
+  background: white;
+  overflow: hidden;
+  
+  @media (min-width: 769px) {
+    padding: 120px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 16px;
+    
+    @media (min-width: 769px) {
+      margin-bottom: 80px;
+    }
+  }
+
+  .arabic-title {
+    color: $golden;
+    font-size: 86px;
+    font-family: 'Mohave', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 73.96px;
+    margin-bottom: 16px;
+    
+    @media (min-width: 769px) {
+      font-size: 104px;
+      line-height: 84.24px;
+    }
+  }
+
+  .section-title {
+    color: black;
+    font-size: 72px;
+    font-family: 'Mohave', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 74.88px;
+    
+    @media (min-width: 769px) {
+      font-size: 96px;
+      line-height: 100px;
+    }
+  }
+
+  .testimonials-container {
+    display: flex;
+    gap: 24px;
+    padding: 0 16px;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    @media (min-width: 769px) {
+      padding: 0 40px;
+      gap: 40px;
+    }
+  }
+
+  .testimonial-card {
+    width: 337px;
+    min-width: 337px;
+    padding: 40px 24px 64px;
+    background: black;
+    box-shadow: 0px 0px 8px $golden;
+    outline: 5px solid $golden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    @media (max-width: 768px) {
+      width: 100%;
+      max-width: 337px;
+      min-width: unset;
+    }
+
+    .testimonial-quote {
+      color: white;
+      font-size: 18px;
+      font-family: 'Helvetica', sans-serif;
+      font-weight: 400;
+      line-height: 20.16px;
+      margin-bottom: 40px;
+      flex-grow: 1;
+    }
+
+    .testimonial-author {
+      color: white;
+      font-size: 16px;
+      font-family: 'Helvetica', sans-serif;
+      font-weight: 400;
+      text-align: right;
+    }
+  }
+}

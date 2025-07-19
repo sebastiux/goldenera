@@ -1,42 +1,133 @@
 {
+  "landing": {
+    "subtitle": "Transforma Tu Cuerpo, Transforma Tu Vida",
+    "enter": "ENTRA A LA ERA DORADA"
+  },
   "nav": {
     "home": "Inicio",
-    "about": "Qui�nes Somos",
-    "joinClub": "�nete al Club",
-    "gallery": "Galer�a"
+    "about": "Quiénes Somos",
+    "join": "Únete al Club",
+    "gallery": "Galería"
   },
   "home": {
     "hero": {
-      "title": "Bienvenido a Golden Era",
-      "subtitle": "Transforma tu cuerpo, eleva tu mente",
-      "cta": "Comienza Tu Viaje"
+      "goldenBody": "Cuerpo Dorado.",
+      "goldenMind": "Mente dorada."
+    },
+    "philosophy": {
+      "forgeYourLegacy": "FORJA TU LEGADO",
+      "legacy": "Combinamos ambición con transformación. A través de disciplina y dedicación, Golden Era entrega resultados inigualables para aquellos que se atreven a convertirse en personas exitosas.",
+      "philosophyTitle": "Filosofía",
+      "text": "En un mundo lleno de individuos débiles, la fuerza es lo que domina. Transforma tu cuerpo con ciencia. Recupera tu respeto. Este programa es solo para aquellos que están listos para ser parte de la Élite.",
+      "cta": "COMIENZA TU ERA"
+    },
+    "results": {
+      "guaranteed": "Resultados",
+      "guaranteedLine2": "garantizados",
+      "text": "Entrena con aquellos que lideran este mundo. Solo tomamos 50 clientes por año. Este programa no es para todos, es solo para aquellos que se atreven a convertirse en élite. Experimenta tu cuerpo ideal en solo 60 días."
+    },
+    "coach": {
+      "title": "Tu Entrenador",
+      "name": "Mario H",
+      "description": "Fanático de las pesas, especialista en calistenia y MMA. CEO de Golden Era."
+    },
+    "package": {
+      "title": "Este Paquete incluye:",
+      "coaching": {
+        "title": "12 semanas de entrenamiento personalizado",
+        "description": "Diseñado para atletas y científicos que buscan liberar la mejor versión de sí mismos."
+      },
+      "apps": {
+        "title": "Apps diseñadas específicamente para ti",
+        "description": "La mejor tecnología para monitorear tu progreso y mejorar tus entrenamientos."
+      },
+      "recipes": {
+        "title": "Libro de recetas exclusivo",
+        "description": "Cientos de recetas fáciles de hacer y alimentando tu cuerpo de la manera más saludable posible."
+      },
+      "merch": {
+        "title": "Mercancía y Recompensas",
+        "description": "Obtén acceso a nuestra mercancía y recompensas exclusivas para nuestros clientes. Esto es para celebrar tu compromiso contigo mismo."
+      }
+    },
+    "method": {
+      "title": "Método Golden Era",
+      "description": "Golden Era crea líderes en este mundo. Para convertirse en uno, el camino no es fácil, y con nosotros es posible.",
+      "steps": {
+        "join": {
+          "title": "Únete al club",
+          "description": "Suscríbete a tu lista exclusiva de clientes y comienza a cumplir tu legado. Una vez que te hayas registrado y pagado el plan, te enviaremos el material en línea que usarás durante las próximas 12 semanas."
+        },
+        "use": {
+          "title": "Usa el material",
+          "description": "Una vez que hayas recibido instrucciones sobre cómo proceder por tu entrenador personal y tu otro material, es hora de ponerse a trabajar. A darle duro."
+        },
+        "work": {
+          "title": "Trabaja en ti",
+          "description": "No olvides usar el libro de recetas diseñado para ayudarte a crecer. Al final del programa, estarás en un mejor lugar que donde estás ahora."
+        }
+      },
+      "cta": "GOLDEN ERA"
+    },
+    "whyItWorks": {
+      "title": "Por qué funciona",
+      "description": "Nuestro método es una compilación de estudios de levantamiento basados en ciencia que desbloquean el potencial atlético completo de una persona.",
+      "clickCards": "Haz clic en cada tarjeta para saber más.",
+      "cards": {
+        "exercises": "Los ejercicios correctos con la técnica correcta",
+        "adaptable": "Plan adaptable a tu tipo de cuerpo",
+        "monitor": "Monitorear el progreso para asistir mejor"
+      }
+    },
+    "testimonials": {
+      "title": "Testimonios",
+      "tate": {
+        "quote": "La grandeza no nace; se logra a través de disciplina implacable.",
+        "author": "Andrew Tate"
+      },
+      "amades": {
+        "quote": "Tu cuerpo es tu imperio. Constrúyelo con sudor, no con excusas.",
+        "author": "Amades Llanos"
+      },
+      "goggins": {
+        "quote": "La única forma de ganar fortaleza mental es hacer cosas que no te gusta hacer. Si estás cómodo, no estás creciendo.",
+        "author": "David Goggins"
+      }
+    },
+    "partners": {
+      "title": "Nuestros Socios"
+    },
+    "joinElite": {
+      "title": "Únete a la Élite.",
+      "description": "Reclama tu respeto hoy. Únete a la élite.",
+      "form": {
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "email": "Correo electrónico",
+        "submit": "COMIENZA TU ERA"
+      }
+    },
+    "followUs": {
+      "title": "Síguenos",
+      "description": "Deja de esperar y comienza ahora. Contáctanos para que podamos ayudarte a conseguir el cuerpo de tus sueños."
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados. Golden Era ®. Una empresa de los Emiratos Árabes Unidos."
+    },
+    "motivational": {
+      "buildBody": "Construye un cuerpo que hable por ti.",
+      "becomeUntouchable": "Hazte intocable."
     }
   },
-  "programs": {
-    "basic": {
-      "name": "Programa B�sico",
-      "price": "$99",
-      "features": ["Plan de entrenamiento personalizado", "Seguimiento semanal", "Gu�a nutricional"]
-    },
-    "premium": {
-      "name": "Programa Premium",
-      "price": "$199", 
-      "features": ["Todo lo del B�sico", "Coaching diario", "Planes de comida", "Video tutoriales"]
-    },
-    "elite": {
-      "name": "Programa Elite",
-      "price": "$299",
-      "features": ["Todo lo del Premium", "Videollamadas 1-a-1", "Gu�a de suplementos", "Soporte 24/7"]
+  "joinElite": {
+      "title": "Únete a la Élite.",
+      "description": "Reclama tu respeto hoy. Únete a la élite.",
+      "form": {
+        "name": "Nombre",
+        "phone": "Teléfono",
+        "email": "Correo electrónico",
+        "submit": "COMIENZA TU ERA",
+        "successMessage": "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto."
+      }
     }
-  },
-  "payment": {
-    "checkout": "Pagar",
-    "processing": "Procesando...",
-    "success": "�Pago exitoso!",
-    "error": "Error en el pago",
-    "name": "Nombre Completo",
-    "email": "Correo Electr�nico", 
-    "card": "Datos de Tarjeta",
-    "confirmationEmail": "Revisa tu correo para la confirmaci�n"
-  }
 }

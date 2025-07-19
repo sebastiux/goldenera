@@ -1,0 +1,114 @@
+@import '../../../styles/variables';
+
+.partners-section {
+  padding: 80px 0;
+  background: white;
+  
+  @media (min-width: 769px) {
+    padding: 120px 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 0 16px;
+    
+    @media (min-width: 769px) {
+      margin-bottom: 80px;
+    }
+  }
+
+  .arabic-title {
+    color: $golden;
+    font-size: 86px;
+    font-family: 'Mohave', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    line-height: 73.96px;
+    margin-bottom: 16px;
+    text-align: right;
+    
+    @media (min-width: 769px) {
+      font-size: 104px;
+      line-height: 84.24px;
+      text-align: center;
+    }
+  }
+
+  .section-title {
+    color: black;
+    font-size: 72px;
+    font-family: 'Mohave', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 74.88px;
+    
+    @media (min-width: 769px) {
+      font-size: 96px;
+      line-height: 100px;
+    }
+  }
+
+  .partners-container {
+    overflow: hidden;
+    position: relative;
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      
+      @media (min-width: 769px) {
+        width: 200px;
+      }
+    }
+    
+    &::before {
+      left: 0;
+      background: linear-gradient(to right, white 0%, transparent 100%);
+    }
+    
+    &::after {
+      right: 0;
+      background: linear-gradient(to left, white 0%, transparent 100%);
+    }
+  }
+
+  .partners-track {
+    display: flex;
+    align-items: center;
+    gap: 56px;
+    padding: 20px;
+    
+    @media (min-width: 769px) {
+      gap: 80px;
+    }
+  }
+
+  .partner-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 85px;
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+    }
+  }
+}

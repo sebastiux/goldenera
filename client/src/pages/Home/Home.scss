@@ -1,38 +1,13 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
-.home {
-  .hero {
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+  background: white;
+  padding-top: 0; // El navbar está fixed
+  
+  section {
     position: relative;
-    height: 100vh;
-    overflow: hidden;
-    background: $dark-gradient;
-    
-    &-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-    }
-    
-    &-content {
-      position: relative;
-      height: 100%;
-      @include flex-center;
-      flex-direction: column;
-      text-align: center;
-      color: $white;
-      z-index: 2;
-    }
-    
-    &-title {
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 900;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: $golden;
-    }
+    width: 100%;
   }
 }

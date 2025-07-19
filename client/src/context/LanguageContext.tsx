@@ -1,34 +1,41 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
-import { useTranslation } from "react-i18next";
+import React, { createContext, useContext, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface LanguageContextType {
-  currentLanguage: string;
-  toggleLanguage: () => void;
+  language: string;
+  changeLanguage: (lang: string) => void;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { i18n } = useTranslation();
-  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
-  const toggleLanguage = () => {
-    const newLang = currentLanguage === "es" ? "en" : "es";
-    i18n.changeLanguage(newLang);
-    setCurrentLanguage(newLang);
+  useEffect(() => {
+    // Cargar idioma guardado o detectar del navegador
+    const savedLang = localStorage.getItem('preferredLanguage');
+    const browserLang = navigator.language.split('-')[0];
+    const defaultLang = savedLang || (browserLang === 'es' ? 'es' : 'en');
+    
+    i18n.changeLanguage(defaultLang);
+  }, [i18n]);
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem('preferredLanguage', lang);
   };
 
   return (
-    <LanguageContext.Provider value={{ currentLanguage, toggleLanguage }}>
+    <LanguageContext.Provider value={{ language: i18n.language, changeLanguage }}>
       {children}
     </LanguageContext.Provider>
   );
 };
 
-export const useLanguage = () => {
+export const useLanguageContext = () => {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
+    throw new Error('useLanguageContext must be used within a LanguageProvider');
   }
   return context;
 };
