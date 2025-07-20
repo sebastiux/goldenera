@@ -1,0 +1,41 @@
+@import '../../../styles/variables';
+
+.guaranteed-results {
+  background: $black;
+  padding: 0;
+  
+  .results-content {
+    max-width: 429px;
+    margin: 0 auto;
+    padding: 60px 16px;
+    @include flex-center;
+    flex-direction: column;
+    gap: 85px;
+  }
+  
+  .arabic-title {
+    font-family: $font-primary, $font-arabic;
+    font-weight: $font-light;
+    font-size: 86px;
+    line-height: 0.86;
+    color: $golden;
+    text-transform: uppercase;
+    text-align: right;
+    width: 100%;
+    max-width: 399px;
+  }
+  
+  .section-title {
+    @include h1-mobile;
+    color: $white;
+    text-align: center;
+    margin-top: -104px;
+  }
+  
+  .results-text {
+    @include body-text;
+    color: $white;
+    text-align: left;
+    max-width: 396px;
+  }
+}

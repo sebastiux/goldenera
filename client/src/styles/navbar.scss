@@ -1,41 +1,206 @@
-@import "./variables";
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
 
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  z-index: 1000;
-  transition: all 0.3s ease;
-  background: transparent;
-  
-  &.scrolled {
-    @include glassmorphism;
-    background: rgba(0, 0, 0, 0.9);
+  right: 0;
+  z-index: $z-index-header;
+  padding: $spacing-lg $spacing-sm;
+  background-color: transparent;
+  @include transition(all, 0.3s);
+
+  @include desktop {
+    padding: $spacing-xl $spacing-xxl;
   }
-  
-  .navbar-container {
-    max-width: 1200px;
+
+  &--scrolled {
+    background-color: rgba($color-black, 0.95);
+    backdrop-filter: blur(10px);
+    padding: $spacing-md $spacing-sm;
+    box-shadow: $shadow-default;
+  }
+
+  &__container {
+    max-width: $desktop-large;
     margin: 0 auto;
-    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  
-  .logo {
-    font-size: 2rem;
-    font-weight: 900;
-    text-decoration: none;
-    letter-spacing: 2px;
-    
-    .golden {
-      color: $golden;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+
+  &__logo {
+    width: 100px;
+    height: 39px;
+    position: relative;
+    z-index: 2;
+
+    @include desktop {
+      width: 150px;
+      height: 58px;
     }
-    
-    .era {
-      color: $white;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__hamburger {
+    width: 52px;
+    height: 40px;
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 2;
+
+    @include desktop {
+      display: none;
+    }
+
+    span {
+      width: 44px;
+      height: 3px;
+      background-color: $color-white;
+      border-radius: 2px;
+      @include transition;
+    }
+
+    &--open {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(8px, -8px);
+      }
+    }
+  }
+
+  &__mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: $color-black;
+    transform: translateX(100%);
+    @include flex-column;
+    padding: $spacing-xxl $spacing-lg;
+
+    @include desktop {
+      display: none;
+    }
+
+    &-header {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: $spacing-xxl;
+    }
+
+    &-list {
+      @include flex-column;
+      gap: $spacing-lg;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+    }
+
+    &-item {
+      a {
+        @include h2-mobile;
+        color: $color-white;
+        position: relative;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 3px;
+          background-color: $color-primary;
+          @include transition(width, 0.3s);
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__close {
+    font-size: 48px;
+    color: $color-white;
+    @include transition;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+  &__desktop-menu {
+    display: none;
+
+    @include desktop {
+      display: flex;
+      align-items: center;
+      gap: $spacing-xl;
+    }
+
+    &-list {
+      display: flex;
+      gap: $spacing-lg;
+
+      a {
+        @include body-text;
+        color: $color-white;
+        font-weight: $font-semibold;
+        position: relative;
+        text-transform: uppercase;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: $color-primary;
+          @include transition(width, 0.3s);
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  &__language-toggle {
+    background-color: $color-primary;
+    color: $color-black;
+    padding: $spacing-xs $spacing-md;
+    border-radius: 25px;
+    font-weight: $font-bold;
+    @include transition;
+
+    &:hover {
+      background-color: $color-secondary;
+      transform: scale(1.05);
+    }
+
+    &--desktop {
+      margin-left: auto;
     }
   }
 }

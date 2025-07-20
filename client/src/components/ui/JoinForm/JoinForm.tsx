@@ -2,12 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import stripeService from '../../../services/stripeService';
 import './JoinForm.scss';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const JoinForm: React.FC = () => {
   const { t } = useTranslation();
   const sectionRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -39,19 +44,46 @@ const JoinForm: React.FC = () => {
       ...formData,
       [e.target.name]: e.target.value
     });
+    setError('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
+    setIsLoading(true);
+    setError('');
+
+    try {
+      // Validación
+      if (!formData.name || !formData.email || !formData.phone) {
+        throw new Error('Please fill all fields');
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        throw new Error('Please enter a valid email');
+      }
+
+      // Crear sesión de Stripe
+      const sessionId = await stripeService.createCheckoutSession({
+        ...formData,
+        priceId: process.env.REACT_APP_STRIPE_PRICE_ID || ''
+      });
+
+      // Redirigir a Stripe Checkout
+      await stripeService.redirectToCheckout(sessionId);
+      
+    } catch (err: any) {
+      setError(err.message || 'Something went wrong. Please try again.');
+      setIsLoading(false);
+    }
   };
 
   return (
     <section ref={sectionRef} className="join-form-section">
       <div className="join-form-content">
         <div className="form-header">
-          <h2 className="arabic-title">الانضمام إلى النخبة</h2>
+          <h2 className="arabic-title" dir="rtl">الانضمام إلى النخبة</h2>
           <h2 className="section-title">{t('home.joinElite.title')}</h2>
           <p className="form-description">
             {t('home.joinElite.description')}
@@ -66,6 +98,7 @@ const JoinForm: React.FC = () => {
             value={formData.name}
             onChange={handleChange}
             required
+            disabled={isLoading}
           />
           <input
             type="tel"
@@ -74,6 +107,7 @@ const JoinForm: React.FC = () => {
             value={formData.phone}
             onChange={handleChange}
             required
+            disabled={isLoading}
           />
           <input
             type="email"
@@ -82,9 +116,17 @@ const JoinForm: React.FC = () => {
             value={formData.email}
             onChange={handleChange}
             required
+            disabled={isLoading}
           />
-          <button type="submit" className="submit-button">
-            {t('home.joinElite.form.submit')}
+          
+          {error && <div className="error-message">{error}</div>}
+          
+          <button 
+            type="submit" 
+            className="submit-button"
+            disabled={isLoading}
+          >
+            {isLoading ? 'Processing...' : t('home.joinElite.form.submit')}
           </button>
         </form>
       </div>
@@ -96,17 +138,17 @@ const JoinForm: React.FC = () => {
         </p>
         
         <div className="social-links">
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="https://placehold.co/82x50" alt="Social 1" />
+          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/82x50" alt="Facebook" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="https://placehold.co/84x41" alt="Social 2" />
+          <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/84x41" alt="TikTok" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="https://placehold.co/82x53" alt="Social 3" />
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/82x53" alt="Instagram" />
           </a>
-          <a href="#" target="_blank" rel="noopener noreferrer">
-            <img src="https://placehold.co/82x31" alt="Social 4" />
+          <a href="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer">
+            <img src="https://placehold.co/82x31" alt="WhatsApp" />
           </a>
         </div>
 
