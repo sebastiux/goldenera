@@ -189,7 +189,7 @@ const Method: React.FC = () => {
               <span>الذهبي</span>
             </div>
             <h1 className="section-title">
-              GOLDEN ERA<br/>METHOD
+              GOLDEN ERA METHOD
             </h1>
           </div>
           <p className="method-description">{t('home.method.description')}</p>

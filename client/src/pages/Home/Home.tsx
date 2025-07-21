@@ -6,10 +6,10 @@ import Hero from '../../components/ui/Hero/Hero';
 import Philosophy from '../../components/ui/Philosophy/Philosophy';
 import Coach from '../../components/ui/Coach/Coach';
 import Method from '../../components/ui/Method/Method';
-import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
 import MotivationalPhrase from '../../components/ui/MotivationalPhrase/MotivationalPhrase';
+import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
 import Package from '../../components/ui/Package/Package';
-import Partners from '../../components/ui/Partners/Partners';
+//import Partners from '../../components/ui/Partners/Partners';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
 
@@ -30,10 +30,9 @@ const Home: React.FC = () => {
       <Philosophy />
       <Coach />
       <Method />
-      <WhyItWorks />
       <MotivationalPhrase />
+      <WhyItWorks />
       <Package />
-      <Partners />
       <JoinForm />
     </div>
   );

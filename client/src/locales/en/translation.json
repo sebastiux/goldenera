@@ -10,6 +10,23 @@
     "gallery": "Gallery"
   },
   "home": {
+    "phrases": {
+  "phrase1": {
+    "part1": "Build a body that speaks for you.",
+    "part2": "Become untouchable."
+  },
+  "phrase2": "Transform your physique. Transform your life.",
+  "phrase3": {
+    "part1": "With no muscles comes no respect.",
+    "part2": "Build a body that commands attention."
+  },
+  "phrase4": "Discipline builds muscle. Muscle builds confidence.",
+  "phrase5": {
+    "part1": "Gold is forged with fire,",
+    "part2": "just as muscle with iron."
+  },
+  "phrase6": "Your body is your first impression. Make it count."
+},
     "hero": {
       "goldenBody": "Golden Body.",
       "goldenMind": "Golden mind."
@@ -70,15 +87,45 @@
       "cta": "GOLDEN ERA"
     },
     "whyItWorks": {
-      "title": "Why it works",
-      "description": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
-      "clickInfo": "Click on each card to learn more.",
-      "cards": {
-        "exercises": "The right exercises with the correct technique",
-        "adaptable": "Plan adaptable to your body type",
-        "monitor": "Monitor progress to better assist"
+    "subtitle": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
+    "clickCard": "Click on each card to learn more details.",
+    "typewriter": {
+      "phrase1": "TRANSFORM YOUR BODY",
+      "phrase2": "UNLOCK YOUR POTENTIAL",
+      "phrase3": "BECOME UNSTOPPABLE",
+      "phrase4": "GOLDEN ERA AWAITS"
+    },
+    "cards": {
+      "technique": {
+        "title": "Perfect technique exercises",
+        "frontText": "The right exercises with the correct technique",
+        "backText": "Personalized coaching in every training session with real-time technique correction",
+        "citation": "*Based on NSCA and ACE Fitness principles"
+      },
+      "recipes": {
+        "title": "Exclusive recipe book",
+        "frontText": "Exclusive recipe book for athletes",
+        "backText": "Over 150 recipes designed by sports nutritionists to maximize your performance",
+        "citation": "*Developed with ISSN certified nutritionists"
+      },
+      "science": {
+        "title": "Proven scientific foundation",
+        "frontText": "Science-based training methodology",
+        "backText": "Based on NSCA, ACSM studies and the latest research in sports science",
+        "citation": "*Methodology backed by Journal of Strength Research"
       }
     },
+    "stats": {
+      "improvement": "strength improvement in 12 weeks*",
+      "effectiveness": "more effective than training alone**",
+      "adherence": "program adherence rate***"
+    },
+    "citations": {
+      "study": "*Internal study with 150 participants (2023-2024)",
+      "comparison": "**Compared to unsupervised training - JSCR 2023",
+      "retention": "***Golden Era client retention data 2024"
+    }
+  },
     "motivational": {
       "buildBody": "Build a body that speaks for you.",
       "becomeUntouchable": "Become untouchable."

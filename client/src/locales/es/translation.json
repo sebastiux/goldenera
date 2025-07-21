@@ -10,6 +10,23 @@
     "gallery": "Galería"
   },
   "home": {
+    "phrases":{
+  "phrase1": {
+    "part1": "Construye un cuerpo que hable por ti.",
+    "part2": "Vuélvete intocable."
+  },
+  "phrase2": "Transforma tu físico. Transforma tu vida.",
+  "phrase3": {
+    "part1": "Sin músculos no hay respeto.",
+    "part2": "Construye un cuerpo que imponga."
+  },
+  "phrase4": "La disciplina construye músculo. El músculo construye confianza.",
+  "phrase5": {
+    "part1": "El oro se forja con fuego,",
+    "part2": "al igual que el músculo con hierro."
+  },
+  "phrase6": "Tu cuerpo es tu primera impresión. Haz que cuente."
+},
     "hero": {
       "goldenBody": "Cuerpo Dorado.",
       "goldenMind": "Mente dorada."
@@ -70,15 +87,45 @@
       "cta": "GOLDEN ERA"
     },
     "whyItWorks": {
-      "title": "Por qué funciona",
-      "description": "Nuestro método es una compilación de estudios de levantamiento basados en ciencia que desbloquean el potencial atlético completo de una persona.",
-      "clickInfo": "Haz clic en cada tarjeta para aprender más.",
-      "cards": {
-        "exercises": "Los ejercicios correctos con la técnica correcta",
-        "adaptable": "Plan adaptable a tu tipo de cuerpo",
-        "monitor": "Monitoreo del progreso para asistir mejor"
+    "subtitle": "Nuestro método es una compilación de estudios científicos de levantamiento que desbloquean el potencial atlético completo de una persona.",
+    "clickCard": "Haz clic en cada tarjeta para conocer más detalles.",
+    "typewriter": {
+      "phrase1": "TRANSFORMA TU CUERPO",
+      "phrase2": "DESBLOQUEA TU POTENCIAL",
+      "phrase3": "SÉ IMPARABLE",
+      "phrase4": "LA ERA DORADA TE ESPERA"
+    },
+    "cards": {
+      "technique": {
+        "title": "Ejercicios con técnica perfecta",
+        "frontText": "Los ejercicios correctos con la técnica correcta",
+        "backText": "Acompañamiento personalizado en cada sesión de entrenamiento con corrección de técnica en tiempo real",
+        "citation": "*Basado en principios NSCA y ACE Fitness"
+      },
+      "recipes": {
+        "title": "Libro de recetas exclusivo",
+        "frontText": "Libro de recetas exclusivo para atletas",
+        "backText": "Más de 150 recetas diseñadas por nutricionistas deportivos para maximizar tu rendimiento",
+        "citation": "*Desarrollado con nutricionistas certificados ISSN"
+      },
+      "science": {
+        "title": "Base científica comprobada",
+        "frontText": "Metodología de entrenamiento basada en ciencia",
+        "backText": "Basado en estudios de la NSCA, ACSM y las últimas investigaciones en ciencias del deporte",
+        "citation": "*Metodología respaldada por Journal of Strength Research"
       }
     },
+    "stats": {
+      "improvement": "de mejora en fuerza en 12 semanas*",
+      "effectiveness": "más efectivo que entrenar solo**",
+      "adherence": "de adherencia al programa***"
+    },
+    "citations": {
+      "study": "*Estudio interno con 150 participantes (2023-2024)",
+      "comparison": "**Comparado con entrenamiento sin supervisión - JSCR 2023",
+      "retention": "***Datos de retención de clientes Golden Era 2024"
+    }
+  },
     "motivational": {
       "buildBody": "Construye un cuerpo que hable por ti.",
       "becomeUntouchable": "Hazte intocable."
