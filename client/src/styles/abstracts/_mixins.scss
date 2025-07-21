@@ -1,3 +1,7 @@
+// client/src/styles/abstracts/_mixins.scss
+
+@import './variables';
+
 // Mixins para responsive
 @mixin mobile {
   @media (max-width: #{$tablet - 1px}) {
@@ -24,10 +28,93 @@
   align-items: center;
 }
 
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
 // Mixin para texto con gradiente dorado
 @mixin gold-gradient-text {
   background: linear-gradient(135deg, $color-gold 0%, $color-gold-dark 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+// Mixins de tipografía
+@mixin h1-mobile {
+  font-family: $font-primary;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.04;
+  text-transform: uppercase;
+}
+
+@mixin h2-mobile {
+  font-family: $font-primary;
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1;
+}
+
+@mixin h3-mobile {
+  font-family: $font-primary;
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.04;
+}
+
+@mixin body-text {
+  font-family: $font-secondary;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+@mixin list-text {
+  font-family: $font-secondary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+@mixin arabic-text {
+  font-family: $font-arabic;
+  font-weight: $font-light;
+  font-size: 86px;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+// Transiciones
+@mixin transition($property: all, $duration: $transition-normal) {
+  transition: $property $duration;
+}
+
+// Smooth scroll
+@mixin smooth-scroll {
+  scroll-behavior: smooth;
+}
+
+// Button styles
+@mixin button-style {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Glassmorphism
+@mixin glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }

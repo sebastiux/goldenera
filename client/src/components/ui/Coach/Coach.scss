@@ -1,15 +1,33 @@
-@import '../../../styles/abstracts/_variables';
-@import '../../../styles/abstracts/_mixins';
+// client/src/components/ui/Coach/Coach.scss
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
 
 .coach-section {
   background: $color-black;
   padding: 56px 0;
-  box-shadow: 0px 2px 10px 5px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  
+  // Efecto de fondo con gradiente
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, 
+      rgba($color-primary, 0.1) 0%, 
+      transparent 70%);
+    pointer-events: none;
+  }
   
   .container {
     max-width: 428px;
     margin: 0 auto;
     padding: 0 16px;
+    position: relative;
+    z-index: 1;
   }
 
   .section-title {
@@ -17,23 +35,109 @@
     color: $color-white;
     text-align: center;
     margin-bottom: 56px;
+    text-transform: uppercase;
+    position: relative;
+    perspective: 1000px;
+    
+    // Efecto de brillo en el texto
+    &::after {
+      content: attr(data-text);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, 
+        transparent 30%, 
+        rgba($color-primary, 0.5) 50%, 
+        transparent 70%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shine 3s infinite;
+    }
   }
 
   .coach-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 24px;
   }
 
   .coach-image {
     width: 314px;
     height: 524px;
+    position: relative;
+    transform-style: preserve-3d;
+    --glow: 0;
+    
+    // Efecto de brillo/glow
+    .image-glow {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(circle at center,
+        rgba($color-primary, calc(0.4 * var(--glow))) 0%,
+        transparent 70%);
+      filter: blur(20px);
+      z-index: -1;
+      transition: opacity 0.3s ease;
+    }
     
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
+      display: block;
+      position: relative;
+      z-index: 1;
+      
+      // Efecto de recorte hexagonal
+      clip-path: polygon(
+        30% 0%, 70% 0%, 
+        100% 30%, 100% 70%, 
+        70% 100%, 30% 100%, 
+        0% 70%, 0% 30%
+      );
+    }
+    
+    // Líneas de poder animadas
+    .power-lines {
+      position: absolute;
+      inset: 0;
+      
+      span {
+        position: absolute;
+        background: linear-gradient(90deg, 
+          transparent, 
+          $color-primary, 
+          transparent);
+        
+        &:nth-child(1) {
+          top: 20%;
+          left: -100%;
+          width: 100%;
+          height: 2px;
+          animation: powerLine1 3s infinite;
+        }
+        
+        &:nth-child(2) {
+          top: 50%;
+          right: -100%;
+          width: 100%;
+          height: 2px;
+          animation: powerLine2 3s infinite 1s;
+        }
+        
+        &:nth-child(3) {
+          bottom: 20%;
+          left: -100%;
+          width: 100%;
+          height: 2px;
+          animation: powerLine1 3s infinite 2s;
+        }
+      }
     }
   }
 
@@ -44,13 +148,129 @@
     .coach-name {
       @include h2-mobile;
       color: $color-primary;
-      margin-bottom: 10px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      
+      // Efecto de subrayado animado
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 3px;
+        background: $color-primary;
+        animation: underlineExpand 2s ease-out forwards;
+        animation-delay: 1s;
+      }
     }
     
     .coach-description {
       @include body-text;
       color: $color-white;
       max-width: 298px;
+      margin: 0 auto;
+      opacity: 0.9;
+      line-height: 1.6;
     }
   }
+
+  // Responsive
+  @include tablet {
+    padding: 80px 0;
+    
+    .container {
+      max-width: 600px;
+    }
+    
+    .section-title {
+      font-size: 86px;
+      margin-bottom: 80px;
+    }
+    
+    .coach-image {
+      width: 400px;
+      height: 600px;
+    }
+    
+    .coach-name {
+      font-size: 64px;
+    }
+    
+    .coach-description {
+      font-size: 20px;
+      max-width: 400px;
+    }
+  }
+
+  @include desktop {
+    padding: 120px 0;
+    
+    .container {
+      max-width: 1200px;
+    }
+    
+    .coach-container {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 80px;
+    }
+    
+    .coach-image {
+      width: 500px;
+      height: 700px;
+      
+      &:hover {
+        .image-glow {
+          opacity: 1;
+        }
+      }
+    }
+    
+    .coach-info {
+      text-align: left;
+      max-width: 500px;
+      
+      .coach-name {
+        font-size: 72px;
+        
+        &::after {
+          left: 0;
+          transform: translateX(0);
+        }
+      }
+      
+      .coach-description {
+        font-size: 22px;
+        max-width: none;
+      }
+    }
+  }
+}
+
+// Animaciones
+@keyframes shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes powerLine1 {
+  0% { left: -100%; }
+  50% { left: 100%; }
+  100% { left: 100%; }
+}
+
+@keyframes powerLine2 {
+  0% { right: -100%; }
+  50% { right: 100%; }
+  100% { right: 100%; }
+}
+
+@keyframes underlineExpand {
+  0% { width: 0; }
+  100% { width: 100px; }
 }

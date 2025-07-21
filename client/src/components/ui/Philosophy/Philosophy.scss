@@ -1,0 +1,229 @@
+// client/src/components/ui/Philosophy/Philosophy.scss
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap');
+
+.philosophy-section {
+  width: 100%;
+  padding: 48px 0;
+  background: $color-white;
+  position: relative; // Asegurar posicionamiento correcto
+  z-index: 1; // Asegurar que esté visible
+  
+  .container {
+    max-width: 428px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 72px;
+  }
+
+  .legacy-block,
+  .philosophy-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .title-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    
+    &:first-child {
+      margin-bottom: -10px;
+    }
+  }
+
+  .arabic-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Noto Sans Arabic', $font-primary, sans-serif;
+    font-weight: 300;
+    font-size: 86px;
+    line-height: 1;
+    color: $color-primary;
+    z-index: 1;
+    opacity: 0.8;
+    pointer-events: none;
+  }
+
+  .legacy-block .title-wrapper:first-child .arabic-overlay {
+    transform: translate(-20%, -50%);
+  }
+
+  .legacy-block .title-wrapper:last-child .arabic-overlay {
+    transform: translate(-30%, -50%);
+  }
+
+  .section-title {
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 72px;
+    line-height: 1.04;
+    color: $color-black;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    letter-spacing: -0.02em;
+  }
+
+  .section-description {
+    font-family: $font-secondary;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.4;
+    color: $color-black;
+    text-align: center;
+    width: 100%;
+    max-width: 396px;
+    margin: 0 auto;
+  }
+
+  .cta-button {
+    width: auto;
+    min-width: 250px;
+    max-width: 396px;
+    padding: 22px 48px;
+    background: $color-black;
+    color: $color-white;
+    font-family: $font-secondary;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    display: block;
+    
+    &:hover {
+      background: $color-primary;
+      color: $color-black;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  // Tablet
+  @include tablet {
+    padding: 80px 0;
+    
+    .container {
+      max-width: 700px;
+      gap: 96px;
+    }
+
+    .arabic-overlay {
+      font-size: 100px;
+    }
+
+    .section-title {
+      font-size: 80px;
+    }
+
+    .section-description {
+      font-size: 20px;
+      max-width: 600px;
+    }
+
+    .cta-button {
+      font-size: 20px;
+      padding: 24px 56px;
+    }
+  }
+
+  // Desktop
+  @include desktop {
+    padding: 120px 0;
+    
+    .container {
+      max-width: 1200px;
+      gap: 120px;
+    }
+
+    .title-wrapper {
+      max-width: 1000px;
+    }
+
+    .arabic-overlay {
+      font-size: 140px;
+      opacity: 0.7;
+    }
+
+    .section-title {
+      font-size: 96px;
+      letter-spacing: -0.03em;
+    }
+
+    .legacy-block {
+      .title-wrapper:first-child .arabic-overlay {
+        transform: translate(-10%, -50%);
+      }
+      
+      .title-wrapper:last-child .arabic-overlay {
+        transform: translate(-20%, -50%);
+      }
+    }
+
+    .philosophy-block .arabic-overlay {
+      font-size: 120px;
+    }
+
+    .section-description {
+      font-size: 22px;
+      line-height: 1.6;
+      max-width: 700px;
+    }
+
+    .cta-button {
+      font-size: 20px;
+      padding: 28px 80px;
+      min-width: 300px;
+      letter-spacing: 2px;
+      
+      &:hover {
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+      }
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .container {
+      max-width: 1400px;
+    }
+
+    .arabic-overlay {
+      font-size: 160px;
+    }
+
+    .section-title {
+      font-size: 120px;
+    }
+
+    .section-description {
+      font-size: 24px;
+      max-width: 800px;
+    }
+  }
+}

@@ -1,84 +1,87 @@
+// client/src/components/ui/Philosophy/Philosophy.tsx
 import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useTranslation } from 'react-i18next';
 import './Philosophy.scss';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Philosophy: React.FC = () => {
-  const { t, i18n } = useTranslation();
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const arabicRef = useRef<HTMLHeadingElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
+  const { t } = useTranslation();
+  const sectionRef = useRef<HTMLElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 80%",
-          end: "bottom 20%",
-          toggleActions: "play none none reverse"
-        }
-      });
+    const section = sectionRef.current;
+    const content = contentRef.current;
 
-      tl.from(arabicRef.current, {
-        x: 100,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      })
-      .from(titleRef.current, {
-        y: 50,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power3.out"
-      }, "-=0.4");
+    if (!section || !content) return;
 
-      // Animar children de forma segura
-      if (contentRef.current) {
-        const children = Array.from(contentRef.current.children);
-        tl.from(children, {
-          y: 30,
+    const elements = gsap.utils.toArray(content.children);
+    
+    elements.forEach((element, index) => {
+      gsap.fromTo(element as Element,
+        {
+          y: 60,
           opacity: 0,
-          duration: 0.6,
-          stagger: 0.2,
-          ease: "power3.out"
-        }, "-=0.4");
-      }
-    }, sectionRef);
+          scale: 0.95
+        },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          delay: index * 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: element as Element,
+            start: "top 85%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
 
-    return () => ctx.revert();
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
-    <section ref={sectionRef} className="philosophy-section">
-      <div className="container">
-        <div className="philosophy-header">
-          <h2 ref={arabicRef} className="arabic-title">صياغة تراثك</h2>
-          <h2 ref={titleRef} className="section-title">
-            {t('home.philosophy.forgeYourLegacy')}
-          </h2>
-        </div>
-        
-        <div ref={contentRef} className="philosophy-content">
-          <p className="philosophy-text">
+    <section className="philosophy-section" ref={sectionRef}>
+      <div className="container" ref={contentRef}>
+        {/* Forge Your Legacy */}
+        <div className="legacy-block">
+          <div className="title-wrapper">
+            <span className="arabic-overlay" aria-hidden="true">صياغة</span>
+            <h2 className="section-title">FORGE YOUR</h2>
+          </div>
+          <div className="title-wrapper">
+            <span className="arabic-overlay" aria-hidden="true">تراثك</span>
+            <h2 className="section-title">LEGACY</h2>
+          </div>
+          <p className="section-description">
             {t('home.philosophy.legacy')}
           </p>
-          
-          <div className="philosophy-divider">
-            <h2 className="arabic-title">فلسفة</h2>
+        </div>
+
+        {/* Philosophy */}
+        <div className="philosophy-block">
+          <div className="title-wrapper">
+            <span className="arabic-overlay" aria-hidden="true">فلسفة</span>
             <h2 className="section-title">{t('home.philosophy.philosophyTitle')}</h2>
           </div>
-          
-          <p className="philosophy-text">
+          <p className="section-description">
             {t('home.philosophy.text')}
           </p>
-          
-          <button className="cta-button">
-            {t('home.philosophy.cta')}
-          </button>
         </div>
+
+        {/* CTA Button */}
+        <button className="cta-button" aria-label="Begin your fitness journey">
+          {t('home.philosophy.cta')}
+        </button>
       </div>
     </section>
   );

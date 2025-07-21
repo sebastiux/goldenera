@@ -17,18 +17,18 @@
     "philosophy": {
       "forgeYourLegacy": "FORGE YOUR LEGACY",
       "legacy": "We combine ambition with transformation. Through discipline and dedication, Golden Era delivers unmatchable results for those who dare to become successful people.",
-      "philosophyTitle": "Philosophy",
+      "philosophyTitle": "PHILOSOPHY",
       "text": "In a world full of weak individuals, strength is what dominates. Transform your body with science. Reclaim your respect. This program is only for those who are ready to become part of the Elite.",
       "cta": "BEGIN YOUR ERA"
     },
     "results": {
-      "guaranteed": "Guaranteed",
-      "guaranteedLine2": "results",
+      "title": "Guaranteed",
+      "titleLine2": "results",
       "text": "Train with those who lead this world. We only take 50 clients per year. This program is not for everyone, it's only for the ones who dare to become elite. Experience your ideal body in just 60 days."
     },
     "coach": {
       "title": "Your Coach",
-      "name": "Mario H",
+      "name": "Mateo H",
       "description": "Fan of weights, and specialist in calisthenics, and MMA. CEO of Golden Era."
     },
     "package": {
@@ -47,7 +47,7 @@
       },
       "merch": {
         "title": "Merch & Rewards",
-        "description": "Get access to out merch and existing exclusive rewards for our clients. This is to celebrate your commitment to yourself."
+        "description": "Get access to our merch and existing exclusive rewards for our clients. This is to celebrate your commitment to yourself."
       }
     },
     "method": {
@@ -58,7 +58,7 @@
           "title": "Join the club",
           "description": "Subscribe to your exclusive list of clients and begin fulfilling your legacy. Once you've registered and paid for the plan, we'll send you the online material you will be using for the next 12 weeks."
         },
-        "use": {
+        "material": {
           "title": "Use the material",
           "description": "Once you have received instructions on how to proceed by your personal coach and your other material, it's time to get to work. Get hustling."
         },
@@ -72,63 +72,79 @@
     "whyItWorks": {
       "title": "Why it works",
       "description": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
-      "clickCards": "Click on each card to learn more.",
+      "clickInfo": "Click on each card to learn more.",
       "cards": {
         "exercises": "The right exercises with the correct technique",
         "adaptable": "Plan adaptable to your body type",
         "monitor": "Monitor progress to better assist"
       }
     },
-    "testimonials": {
+    "motivational": {
+      "buildBody": "Build a body that speaks for you.",
+      "becomeUntouchable": "Become untouchable."
+    },
+    "testimonies": {
       "title": "Testimonies",
-      "tate": {
-        "quote": "Greatness isn't born; it is achieved through relentless discipline.",
+      "testimonial1": {
+        "text": "Greatness isn't born; it is achieved through relentless discipline.",
         "author": "Andrew Tate"
       },
-      "amades": {
-        "quote": "Your body is your empire. Build it with sweat, not excuses.",
+      "testimonial2": {
+        "text": "Your body is your empire. Build it with sweat, not excuses.",
         "author": "Amades Llanos"
       },
-      "goggins": {
-        "quote": "The only way you gain mental toughness is to do things you're not happy doing. If you're comfortable, you're not growing.",
+      "testimonial3": {
+        "text": "The only way you gain mental toughness is to do things you're not happy doing. If you're comfortable, you're not growing.",
         "author": "David Goggins"
       }
     },
     "partners": {
       "title": "Our Partners"
     },
-    "joinElite": {
-      "title": "Join the Elite.",
-      "description": "Reclaim your respect today. Join the elite.",
-      "form": {
-        "name": "Name",
-        "phone": "Phone #",
-        "email": "Email",
-        "submit": "BEGIN YOUR ERA"
-      }
-    },
-    "followUs": {
-      "title": "Follow us",
-      "description": "Stop waiting and start now. Contact us so we can help you get your dream body."
-    },
     "footer": {
+      "followUs": "Follow us",
+      "description": "Stop waiting and start now. Contact us so we can help you get your dream body.",
       "rights": "All rights reserved. Golden Era ®. A United Arab Emirates company."
-    },
-    "motivational": {
-      "buildBody": "Build a body that speaks for you.",
-      "becomeUntouchable": "Become untouchable."
     }
   },
-
   "joinElite": {
-      "title": "Join the Elite.",
-      "description": "Reclaim your respect today. Join the elite.",
-      "form": {
-        "name": "Name",
-        "phone": "Phone #",
-        "email": "Email",
-        "submit": "BEGIN YOUR ERA",
-        "successMessage": "Thank you for your interest! We will contact you soon."
-      }
+    "title": "Join the Elite.",
+    "description": "Reclaim your respect today. Join the elite.",
+    "form": {
+      "name": "Name",
+      "phone": "Phone #",
+      "email": "Email",
+      "submit": "BEGIN YOUR ERA",
+      "successMessage": "Thank you for your interest! We'll be in touch with you soon.",
+      "errorMessage": "There was an error. Please try again."
     }
+  },
+  "about": {
+    "title": "About Golden Era",
+    "mission": "Our Mission",
+    "missionText": "To transform lives through science-based training and unwavering dedication.",
+    "vision": "Our Vision",
+    "visionText": "To create a world where strength, discipline, and excellence are the standard.",
+    "values": "Our Values",
+    "valuesList": {
+      "discipline": "Discipline",
+      "excellence": "Excellence",
+      "transformation": "Transformation",
+      "leadership": "Leadership"
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "loadMore": "Load More"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "cancel": "Cancel"
+  }
 }

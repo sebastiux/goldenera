@@ -1,3 +1,4 @@
+// client/src/pages/Home/Home.tsx
 import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -8,9 +9,7 @@ import Method from '../../components/ui/Method/Method';
 import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
 import MotivationalPhrase from '../../components/ui/MotivationalPhrase/MotivationalPhrase';
 import Package from '../../components/ui/Package/Package';
-// import Testimonials from '../../components/ui/Testimonials/Testimonials';
 import Partners from '../../components/ui/Partners/Partners';
-// import GuaranteedResults from '../../components/ui/GuaranteedResults/GuaranteedResults';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
 
@@ -34,9 +33,7 @@ const Home: React.FC = () => {
       <WhyItWorks />
       <MotivationalPhrase />
       <Package />
-      {/* <Testimonials /> */}
       <Partners />
-      {/* <GuaranteedResults /> */}
       <JoinForm />
     </div>
   );

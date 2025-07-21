@@ -1,174 +1,381 @@
-@import '../../../styles/variables';
+// client/src/components/ui/Method/Method.scss
+@import '../../../styles/abstracts/variables';
+@import '../../../styles/abstracts/mixins';
 
 .method-section {
-  padding: 80px 0;
-  background: white;
+  padding: 80px 0 40px;
+  background: $color-white;
+  position: relative;
+  overflow: hidden;
   
-  @media (min-width: 769px) {
-    padding: 120px 0;
+  // Patrón de fondo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 50%, rgba($color-primary, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba($color-primary, 0.05) 0%, transparent 50%);
+    pointer-events: none;
   }
-
+  
   .container {
     max-width: 428px;
     margin: 0 auto;
     padding: 0 16px;
-    
-    @media (min-width: 769px) {
-      max-width: 1200px;
-      padding: 0 40px;
-    }
+    position: relative;
+    z-index: 1;
   }
 
+  // Header con títulos superpuestos
   .method-header {
-    text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 64px;
     
-    @media (min-width: 769px) {
-      margin-bottom: 80px;
+    .title-wrapper {
+      position: relative;
+      height: 200px; // Altura fija para contener ambos textos
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 32px;
     }
-  }
-
-  .arabic-title {
-    color: $golden;
-    font-size: 86px;
-    font-family: 'Mohave', sans-serif;
-    font-weight: 300;
-    text-transform: uppercase;
-    line-height: 73.96px;
-    text-align: right;
-    margin-bottom: 16px;
     
-    @media (min-width: 769px) {
-      font-size: 104px;
-      line-height: 84.24px;
+    // Texto árabe como fondo decorativo
+    .arabic-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      padding-right: 16px;
+      z-index: 1;
+      
+      span {
+        color: #EAC31B;
+        font-size: 86px;
+        font-family: 'Mohave', sans-serif;
+        font-weight: 300;
+        text-transform: uppercase;
+        line-height: 0.86;
+        opacity: 0.6; // Semi-transparente para efecto de fondo
+        text-align: right;
+        width: 100%;
+      }
+    }
+    
+    // Título en inglés como elemento principal
+    .section-title {
+      position: relative;
+      z-index: 2;
+      width: 100%;
       text-align: center;
+      color: black;
+      font-size: 72px;
+      font-family: 'Mohave', sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      line-height: 1.04;
+      margin: 0;
     }
-  }
-
-  .section-title {
-    color: black;
-    font-size: 72px;
-    font-family: 'Mohave', sans-serif;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 74.88px;
-    margin-bottom: 24px;
     
-    @media (min-width: 769px) {
-      font-size: 96px;
-      line-height: 100px;
+    .method-description {
+      width: 100%;
+      color: black;
+      font-size: 18px;
+      font-family: 'Helvetica', Arial, sans-serif;
+      font-weight: 400;
+      line-height: 20.16px;
+      word-wrap: break-word;
+      text-align: center;
+      max-width: 396px;
+      margin: 0 auto;
     }
   }
 
-  .method-description {
-    color: black;
-    font-size: 18px;
-    font-family: 'Helvetica', sans-serif;
-    font-weight: 400;
-    line-height: 20.16px;
-    max-width: 600px;
-    margin: 0 auto;
-    
-    @media (min-width: 769px) {
-      font-size: 20px;
-      line-height: 28px;
-    }
-  }
-
+  // Steps container
   .method-steps {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 48px;
-    margin-bottom: 60px;
     
-    @media (min-width: 769px) {
-      gap: 60px;
-      margin-bottom: 80px;
+    // Línea conectora
+    .connector-line {
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(180deg, 
+        $color-primary 0%, 
+        $color-gold-dark 50%, 
+        $color-primary 100%);
+      transform-origin: top;
+      transform: scaleY(0);
     }
   }
 
+  // Individual step
   .method-step {
+    position: relative;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
     gap: 24px;
+    background: $color-white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transform-style: preserve-3d;
+    transition: all 0.2s ease;
     
-    @media (min-width: 769px) {
-      flex-direction: row;
-      text-align: left;
-      gap: 40px;
-      
-      &:nth-child(even) {
-        flex-direction: row-reverse;
-        text-align: right;
-      }
+    .step-number {
+      position: absolute;
+      left: 0;
+      width: 40px;
+      height: 40px;
+      background: var(--step-color, $color-primary);
+      color: $color-white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 18px;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     }
-
-    .step-icon {
-      width: 189px;
-      height: 189px;
-      flex-shrink: 0;
+    
+    .step-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      margin-left: 30px;
+    }
+    
+    .step-image {
+      width: 100%;
+      height: 200px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
       
       img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 50%;
+        transition: transform 0.2s ease;
+      }
+      
+      .image-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, 
+          rgba($color-primary, 0.2) 0%, 
+          transparent 100%);
+        opacity: 0;
+        transition: opacity 0.2s ease;
+      }
+      
+      &:hover {
+        .image-overlay {
+          opacity: 1;
+        }
       }
     }
-
-    .step-content {
-      max-width: 500px;
-      
-      h3 {
+    
+    .step-info {
+      .step-title {
         color: black;
         font-size: 56px;
         font-family: 'Mohave', sans-serif;
         font-weight: 600;
         line-height: 56px;
-        margin-bottom: 16px;
-        
-        @media (min-width: 769px) {
-          font-size: 64px;
-          line-height: 64px;
-        }
+        word-wrap: break-word;
+        margin-bottom: 8px;
       }
-
-      p {
+      
+      .step-description {
         color: black;
         font-size: 18px;
-        font-family: 'Helvetica', sans-serif;
+        font-family: 'Helvetica', Arial, sans-serif;
         font-weight: 400;
         line-height: 20.16px;
+        word-wrap: break-word;
+      }
+    }
+    
+    // Decoración
+    .step-decoration {
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      
+      span {
+        width: 20px;
+        height: 2px;
+        background: var(--step-color, $color-primary);
+        opacity: 0.3;
         
-        @media (min-width: 769px) {
-          font-size: 20px;
-          line-height: 28px;
+        &:nth-child(2) {
+          width: 15px;
+        }
+        
+        &:nth-child(3) {
+          width: 10px;
         }
       }
     }
   }
 
-  .cta-button {
-    display: block;
-    margin: 0 auto;
-    padding: 22px 106px;
-    background: black;
-    color: white;
-    font-size: 18px;
-    font-family: 'Helvetica', sans-serif;
-    font-weight: 700;
-    line-height: 18px;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  // Responsive
+  @include tablet {
+    padding: 120px 0 60px;
     
-    &:hover {
-      background: $golden;
-      color: black;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    .container {
+      max-width: 700px;
+    }
+    
+    .method-header {
+      .title-wrapper {
+        height: 220px;
+      }
+      
+      .arabic-background span {
+        font-size: 100px;
+      }
+      
+      .section-title {
+        font-size: 80px;
+      }
+    }
+    
+    .method-steps {
+      gap: 64px;
+      
+      .connector-line {
+        left: 30px;
+        width: 3px;
+      }
+    }
+    
+    .method-step {
+      padding: 32px;
+      
+      .step-number {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+      
+      .step-content {
+        margin-left: 50px;
+      }
+      
+      .step-image {
+        height: 250px;
+      }
+    }
+  }
+
+  @include desktop {
+    padding: 160px 0 80px;
+    
+    .container {
+      max-width: 1200px;
+    }
+    
+    .method-header {
+      .title-wrapper {
+        height: 250px;
+      }
+      
+      .arabic-background {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        gap: 40px;
+        
+        span {
+          font-size: 110px;
+          width: auto;
+          text-align: center;
+        }
+      }
+      
+      .section-title {
+        font-size: 96px;
+        
+        br {
+          display: none;
+        }
+      }
+      
+      .method-description {
+        font-size: 20px;
+        line-height: 28px;
+        max-width: 600px;
+      }
+    }
+    
+    .method-steps {
+      gap: 80px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .method-step {
+      flex-direction: row;
+      
+      &.step-left {
+        .step-content {
+          flex-direction: row;
+        }
+      }
+      
+      &.step-right {
+        .step-content {
+          flex-direction: row-reverse;
+        }
+      }
+      
+      .step-content {
+        align-items: center;
+        gap: 40px;
+      }
+      
+      .step-image,
+      .step-info {
+        flex: 1;
+      }
+      
+      .step-image {
+        height: 300px;
+      }
+      
+      .step-info {
+        .step-title {
+          font-size: 64px;
+          line-height: 64px;
+        }
+        
+        .step-description {
+          font-size: 20px;
+          line-height: 28px;
+        }
+      }
     }
   }
 }
