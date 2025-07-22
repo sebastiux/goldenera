@@ -104,18 +104,6 @@ const Philosophy: React.FC = () => {
             {t('home.philosophy.legacy')}
           </p>
         </div>
-
-        {/* Philosophy */}
-        <div className="philosophy-philosophy-block">
-          <div className="philosophy-title-wrapper">
-            <span className="philosophy-arabic-overlay" aria-hidden="true">فلسفة</span>
-            <h2 className="philosophy-section-title">{t('home.philosophy.philosophyTitle')}</h2>
-          </div>
-          <p className="philosophy-section-description">
-            {t('home.philosophy.text')}
-          </p>
-        </div>
-
         {/* CTA Button */}
         <button className="philosophy-cta-button" aria-label="Begin your fitness journey">
           {t('home.philosophy.cta')}

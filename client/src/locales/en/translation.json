@@ -11,22 +11,22 @@
   },
   "home": {
     "phrases": {
-  "phrase1": {
-    "part1": "Build a body that speaks for you.",
-    "part2": "Become untouchable."
-  },
-  "phrase2": "Transform your physique. Transform your life.",
-  "phrase3": {
-    "part1": "With no muscles comes no respect.",
-    "part2": "Build a body that commands attention."
-  },
-  "phrase4": "Discipline builds muscle. Muscle builds confidence.",
-  "phrase5": {
-    "part1": "Gold is forged with fire,",
-    "part2": "just as muscle with iron."
-  },
-  "phrase6": "Your body is your first impression. Make it count."
-},
+      "phrase1": {
+        "part1": "Build a body that speaks for you.",
+        "part2": "Become untouchable."
+      },
+      "phrase2": "Transform your physique. Transform your life.",
+      "phrase3": {
+        "part1": "With no muscles comes no respect.",
+        "part2": "Build a body that commands attention."
+      },
+      "phrase4": "Discipline builds muscle. Muscle builds confidence.",
+      "phrase5": {
+        "part1": "Gold is forged with fire,",
+        "part2": "just as muscle with iron."
+      },
+      "phrase6": "Your body is your first impression. Make it count."
+    },
     "hero": {
       "goldenBody": "Golden Body.",
       "goldenMind": "Golden mind."
@@ -45,87 +45,102 @@
     },
     "coach": {
       "title": "Your Coach",
-      "name": "Mateo H",
+      "name": "Mateo Haces",
+      "quote": "Results speak louder than words",
       "description": "Fan of weights, and specialist in calisthenics, and MMA. CEO of Golden Era."
     },
-    "package": {
-      "title": "This Package includes:",
-      "coaching": {
-        "title": "12 week of personalized coaching",
-        "description": "Designed for athletes and scientists which aim to release the best version of yourself."
-      },
-      "apps": {
-        "title": "Apps designed specifically for you",
-        "description": "Best technology to monitor your progress and enhance your workouts."
-      },
-      "recipes": {
-        "title": "Exclusive recipe book",
-        "description": "Hundreds of recipes easy to make and feeding your body the healthiest way possible."
-      },
-      "merch": {
-        "title": "Merch & Rewards",
-        "description": "Get access to our merch and existing exclusive rewards for our clients. This is to celebrate your commitment to yourself."
-      }
-    },
     "method": {
-      "title": "Golden Era Method",
-      "description": "Golden Era creates leaders in this world. To become one, the way is not easy, and with us it is possible.",
+      "title": "GOLDEN ERA METHOD",
+      "description": "Our proven 3-step system to transform your body and mind into an unstoppable force.",
       "steps": {
         "join": {
-          "title": "Join the club",
-          "description": "Subscribe to your exclusive list of clients and begin fulfilling your legacy. Once you've registered and paid for the plan, we'll send you the online material you will be using for the next 12 weeks."
+          "title": "Join the Elite Program",
+          "description": "Get instant access to your personalized training plan, nutrition guide, and exclusive Golden Era community."
         },
         "material": {
-          "title": "Use the material",
-          "description": "Once you have received instructions on how to proceed by your personal coach and your other material, it's time to get to work. Get hustling."
+          "title": "Access Premium Material",
+          "description": "Receive your custom workout routines, meal plans, supplement protocols, and exclusive video content from our coaches."
         },
         "work": {
-          "title": "Work on you",
-          "description": "Don't forget to use the recipe book designed to help you grow. At the end of the program, you'll be at a better place than where you are now."
+          "title": "Work & Transform",
+          "description": "Follow the program with discipline, track your progress, and watch your body transform into its golden version."
         }
-      },
-      "cta": "GOLDEN ERA"
-    },
-    "whyItWorks": {
-    "subtitle": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
-    "clickCard": "Click on each card to learn more details.",
-    "typewriter": {
-      "phrase1": "TRANSFORM YOUR BODY",
-      "phrase2": "UNLOCK YOUR POTENTIAL",
-      "phrase3": "BECOME UNSTOPPABLE",
-      "phrase4": "GOLDEN ERA AWAITS"
-    },
-    "cards": {
-      "technique": {
-        "title": "Perfect technique exercises",
-        "frontText": "The right exercises with the correct technique",
-        "backText": "Personalized coaching in every training session with real-time technique correction",
-        "citation": "*Based on NSCA and ACE Fitness principles"
-      },
-      "recipes": {
-        "title": "Exclusive recipe book",
-        "frontText": "Exclusive recipe book for athletes",
-        "backText": "Over 150 recipes designed by sports nutritionists to maximize your performance",
-        "citation": "*Developed with ISSN certified nutritionists"
-      },
-      "science": {
-        "title": "Proven scientific foundation",
-        "frontText": "Science-based training methodology",
-        "backText": "Based on NSCA, ACSM studies and the latest research in sports science",
-        "citation": "*Methodology backed by Journal of Strength Research"
       }
     },
-    "stats": {
-      "improvement": "strength improvement in 12 weeks*",
-      "effectiveness": "more effective than training alone**",
-      "adherence": "program adherence rate***"
+    "packages": {
+      "title": "Choose Your Golden Path",
+      "subtitle": "Transform your life with our exclusive training programs",
+      "offer_title": "LIMITED TIME OFFER",
+      "membership_badge": "EXCLUSIVE MEMBERSHIP",
+      "most_exclusive": "MOST EXCLUSIVE",
+      "days": "DAYS",
+      "hours": "HOURS",
+      "minutes": "MIN",
+      "seconds": "SEC",
+      "savings": "You save",
+      "spots_left": "Only {{count}} spots left",
+      "standard": {
+        "name": "Golden Standard",
+        "type": "Online Program",
+        "description": "Complete online transformation program with personalized coaching and continuous support"
+      },
+      "deluxe": {
+        "name": "Ultra Deluxe",
+        "type": "In-Person - Mexico City",
+        "description": "The ultimate luxury fitness experience with in-person training in Mexico City"
+      },
+      "features": {
+        "coaching": "Personal 1-on-1 Coaching",
+        "apps": "Premium Mobile Apps Access",
+        "recipes": "500+ Gourmet Healthy Recipes",
+        "merch": "Exclusive Golden Era Merchandise",
+        "support": "24/7 VIP Support",
+        "tracking": "Advanced Progress Tracking",
+        "presential": "In-Person Training Sessions",
+        "location": "Mexico City Premium Facilities"
+      },
+      "cta": "Start Your Transformation"
     },
-    "citations": {
-      "study": "*Internal study with 150 participants (2023-2024)",
-      "comparison": "**Compared to unsupervised training - JSCR 2023",
-      "retention": "***Golden Era client retention data 2024"
-    }
-  },
+    "whyItWorks": {
+      "subtitle": "Our method is a compilation of science based lifting studies which unlock a persons full athletic potential.",
+      "clickCard": "Click on each card to learn more details.",
+      "typewriter": {
+        "phrase1": "TRANSFORM YOUR BODY",
+        "phrase2": "UNLOCK YOUR POTENTIAL",
+        "phrase3": "BECOME UNSTOPPABLE",
+        "phrase4": "GOLDEN ERA AWAITS"
+      },
+      "cards": {
+        "technique": {
+          "title": "Perfect technique exercises",
+          "frontText": "The right exercises with the correct technique",
+          "backText": "Personalized coaching in every training session with real-time technique correction",
+          "citation": "*Based on NSCA and ACE Fitness principles"
+        },
+        "recipes": {
+          "title": "Exclusive recipe book",
+          "frontText": "Exclusive recipe book for athletes",
+          "backText": "Over 150 recipes designed by sports nutritionists to maximize your performance",
+          "citation": "*Developed with ISSN certified nutritionists"
+        },
+        "science": {
+          "title": "Proven scientific foundation",
+          "frontText": "Science-based training methodology",
+          "backText": "Based on NSCA, ACSM studies and the latest research in sports science",
+          "citation": "*Methodology backed by Journal of Strength Research"
+        }
+      },
+      "stats": {
+        "improvement": "strength improvement in 12 weeks*",
+        "effectiveness": "more effective than training alone**",
+        "adherence": "program adherence rate***"
+      },
+      "citations": {
+        "study": "*Internal study with 150 participants (2023-2024)",
+        "comparison": "**Compared to unsupervised training - JSCR 2023",
+        "retention": "***Golden Era client retention data 2024"
+      }
+    },
     "motivational": {
       "buildBody": "Build a body that speaks for you.",
       "becomeUntouchable": "Become untouchable."

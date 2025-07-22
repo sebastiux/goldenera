@@ -148,7 +148,7 @@
     .coach-name {
       @include h2-mobile;
       color: $color-primary;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
       text-transform: uppercase;
       letter-spacing: 2px;
       position: relative;
@@ -168,13 +168,114 @@
       }
     }
     
+    .coach-quote {
+      margin: 24px 0;
+      padding: 20px;
+      background: linear-gradient(135deg, 
+        rgba($color-primary, 0.1) 0%, 
+        rgba($color-primary, 0.05) 100%);
+      border-left: 4px solid $color-primary;
+      border-radius: 8px;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, 
+          rgba($color-primary, 0.2) 0%, 
+          transparent 70%);
+        animation: pulseGlow 3s ease-in-out infinite;
+      }
+      
+      .quote-icon {
+        font-size: 32px;
+        margin-bottom: 12px;
+        animation: bounce 2s ease-in-out infinite;
+      }
+      
+      blockquote {
+        @include h3-mobile;
+        color: $color-white;
+        margin: 0;
+        font-style: italic;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 1;
+        
+        &::before,
+        &::after {
+          content: '"';
+          color: $color-primary;
+          font-size: 1.5em;
+          position: relative;
+          top: 0.1em;
+        }
+      }
+    }
+    
     .coach-description {
       @include body-text;
       color: $color-white;
       max-width: 298px;
-      margin: 0 auto;
+      margin: 0 auto 24px;
       opacity: 0.9;
       line-height: 1.6;
+    }
+    
+    .coach-instagram {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, $color-primary, darken($color-primary, 10%));
+      color: $color-white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: left 0.5s ease;
+      }
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba($color-primary, 0.3);
+        
+        &::before {
+          left: 100%;
+        }
+        
+        svg {
+          transform: rotate(360deg);
+        }
+      }
+      
+      svg {
+        width: 24px;
+        height: 24px;
+        transition: transform 0.5s ease;
+      }
+      
+      span {
+        font-size: 16px;
+        letter-spacing: 0.5px;
+      }
     }
   }
 
@@ -200,9 +301,25 @@
       font-size: 64px;
     }
     
+    .coach-quote {
+      padding: 32px;
+      
+      blockquote {
+        font-size: 28px;
+      }
+    }
+    
     .coach-description {
       font-size: 20px;
       max-width: 400px;
+    }
+    
+    .coach-instagram {
+      padding: 16px 32px;
+      
+      span {
+        font-size: 18px;
+      }
     }
   }
 
@@ -244,6 +361,14 @@
         }
       }
       
+      .coach-quote {
+        margin: 32px 0;
+        
+        blockquote {
+          font-size: 32px;
+        }
+      }
+      
       .coach-description {
         font-size: 22px;
         max-width: none;
@@ -273,4 +398,20 @@
 @keyframes underlineExpand {
   0% { width: 0; }
   100% { width: 100px; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
