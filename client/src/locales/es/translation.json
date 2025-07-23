@@ -241,5 +241,31 @@
     "next": "Siguiente",
     "submit": "Enviar",
     "cancel": "Cancelar"
+  },
+  "popup": {
+    "exclusiveOffer": "OFERTA EXCLUSIVA",
+    "goldenEra": "GOLDEN ERA",
+    "discount": "50% OFF",
+    "expiresIn": "Esta oferta expira en:",
+    "hours": "HORAS",
+    "minutes": "MIN",
+    "seconds": "SEG",
+    "onlyFirst": "Solo para los primeros 20 clientes",
+    "fullAccess": "Acceso completo al programa Golden Era",
+    "joinNow": "ÚNETE AHORA",
+    "urgency": "⚡ Solo quedan pocas plazas disponibles"
+  },
+"popup": {
+    "exclusiveOffer": "EXCLUSIVE OFFER",
+    "goldenEra": "GOLDEN ERA", 
+    "discount": "50% OFF",
+    "expiresIn": "This offer expires in:",
+    "hours": "HOURS",
+    "minutes": "MIN", 
+    "seconds": "SEC",
+    "onlyFirst": "Only for the first 20 clients",
+    "fullAccess": "Full access to Golden Era program",
+    "joinNow": "JOIN NOW",
+    "urgency": "⚡ Only few spots left available"
   }
 }
