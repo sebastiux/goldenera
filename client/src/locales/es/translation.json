@@ -181,18 +181,50 @@
       "errorMessage": "Hubo un error. Por favor intenta de nuevo."
     }
   },
-  "about": {
-    "title": "Acerca de Golden Era",
-    "mission": "Nuestra Misión",
-    "missionText": "Transformar vidas a través del entrenamiento basado en ciencia y dedicación inquebrantable.",
-    "vision": "Nuestra Visión",
-    "visionText": "Crear un mundo donde la fuerza, disciplina y excelencia sean el estándar.",
-    "values": "Nuestros Valores",
-    "valuesList": {
-      "discipline": "Disciplina",
-      "excellence": "Excelencia",
-      "transformation": "Transformación",
-      "leadership": "Liderazgo"
+    "about": {
+    "hero": {
+      "subtitle": "Los Débiles Hacen Excusas. Los Fuertes Hacen Historia."
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "text": "En Golden Era, no aceptamos la mediocridad. Transformamos a los ambiciosos en imparables. Si buscas comodidad, busca en otro lado. Aquí forjamos guerreros que dominan en los negocios, en las relaciones y en la vida. Tu cuerpo débil es un reflejo de tu mente débil. Nosotros arreglamos ambos."
+    },
+    "vision": {
+      "title": "Nuestra Visión",
+      "text": "Visualizamos un mundo donde los hombres son hombres. Donde la fuerza no es opcional, es obligatoria. Donde cada hombre que camina por la calle irradia poder, respeto y dominio absoluto. Los débiles nos temen. Los fuertes nos respetan. Los sabios se unen a nosotros.",
+      "stats": {
+        "elite": "Élite Solamente",
+        "excuses": "Excusas Aceptadas",
+        "transformation": "Transformación Total"
+      }
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "discipline": {
+        "title": "Disciplina",
+        "text": "Sin disciplina eres un esclavo de tus impulsos. Con disciplina eres el arquitecto de tu destino."
+      },
+      "excellence": {
+        "title": "Excelencia",
+        "text": "La mediocridad es un cáncer. La excelencia es la única cura. Sé excepcional o sé olvidado."
+      },
+      "transformation": {
+        "title": "Transformación",
+        "text": "Destruimos tu versión débil para construir tu versión imparable. El dolor es temporal, la grandeza es eterna."
+      },
+      "leadership": {
+        "title": "Liderazgo",
+        "text": "Los líderes no nacen, se forjan en hierro y sudor. Sé el hombre que otros hombres quieren ser."
+      }
+    },
+    "power": {
+      "title": "Poder Absoluto",
+      "subtitle": "Tu físico débil grita tu falta de disciplina. Es hora de callar las bocas y abrir los ojos."
+    },
+    "cta": {
+      "title": "¿Seguirás Siendo Débil o Te Volverás Legendario?",
+      "text": "Solo 50 guerreros al año. Los débiles dudan. Los fuertes actúan. ¿Cuál eres tú?",
+      "button": "DESTRUYE TU DEBILIDAD"
     }
   },
   "gallery": {

@@ -181,18 +181,50 @@
       "errorMessage": "There was an error. Please try again."
     }
   },
-  "about": {
-    "title": "About Golden Era",
-    "mission": "Our Mission",
-    "missionText": "To transform lives through science-based training and unwavering dedication.",
-    "vision": "Our Vision",
-    "visionText": "To create a world where strength, discipline, and excellence are the standard.",
-    "values": "Our Values",
-    "valuesList": {
-      "discipline": "Discipline",
-      "excellence": "Excellence",
-      "transformation": "Transformation",
-      "leadership": "Leadership"
+ "about": {
+    "hero": {
+      "subtitle": "The Weak Make Excuses. The Strong Make History."
+    },
+    "mission": {
+      "title": "Our Mission",
+      "text": "At Golden Era, we don't accept mediocrity. We transform the ambitious into the unstoppable. If you seek comfort, look elsewhere. Here we forge warriors who dominate in business, relationships, and life. Your weak body is a reflection of your weak mind. We fix both."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "text": "We envision a world where men are men. Where strength isn't optional, it's mandatory. Where every man walking the street radiates power, respect, and absolute dominance. The weak fear us. The strong respect us. The wise join us.",
+      "stats": {
+        "elite": "Elite Only",
+        "excuses": "Excuses Accepted",
+        "transformation": "Total Transformation"
+      }
+    },
+    "values": {
+      "title": "Our Values",
+      "discipline": {
+        "title": "Discipline",
+        "text": "Without discipline you're a slave to your impulses. With discipline you're the architect of your destiny."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "text": "Mediocrity is cancer. Excellence is the only cure. Be exceptional or be forgotten."
+      },
+      "transformation": {
+        "title": "Transformation",
+        "text": "We destroy your weak version to build your unstoppable version. Pain is temporary, greatness is eternal."
+      },
+      "leadership": {
+        "title": "Leadership",
+        "text": "Leaders aren't born, they're forged in iron and sweat. Be the man other men want to be."
+      }
+    },
+    "power": {
+      "title": "Absolute Power",
+      "subtitle": "Your weak physique screams your lack of discipline. Time to shut mouths and open eyes."
+    },
+    "cta": {
+      "title": "Will You Stay Weak or Become Legendary?",
+      "text": "Only 50 warriors per year. The weak hesitate. The strong act. Which are you?",
+      "button": "DESTROY YOUR WEAKNESS"
     }
   },
   "gallery": {
