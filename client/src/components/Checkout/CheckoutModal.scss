@@ -1,0 +1,126 @@
+﻿// client/src/components/Checkout/CheckoutModal.scss
+.checkout-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkout-modal {
+  position: relative;
+  background: #fff;
+  border-radius: 16px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  outline: none;
+
+  .modal-header {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+
+    .close-button {
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: #fff;
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  .checkout-content {
+    padding: 1rem;
+  }
+
+  .success-message {
+    text-align: center;
+    padding: 3rem 2rem;
+
+    .success-icon {
+      width: 80px;
+      height: 80px;
+      background: #4CAF50;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      font-size: 2rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    h2 {
+      color: #333;
+      margin-bottom: 1rem;
+      font-size: 2rem;
+    }
+
+    p {
+      color: #666;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    .golden-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%);
+      color: #000;
+      padding: 0.5rem 2rem;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+  }
+
+  .error-message {
+    background: #ffebee;
+    color: #c62828;
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    border-left: 4px solid #c62828;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .checkout-modal {
+    width: 95%;
+    margin: 1rem;
+  }
+
+  .success-message {
+    padding: 2rem 1rem;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}

@@ -1,23 +1,20 @@
-import { loadStripe, Stripe } from '@stripe/stripe-js';
+﻿// client/src/services/stripeService.ts
+import { Stripe } from '@stripe/stripe-js';
 import axios from 'axios';
-
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY || '');
+import { stripePromise } from './stripe';
 
 export interface CustomerData {
-  name: string;
-  email: string;
-  phone: string;
-}
-
-export interface CheckoutSessionData extends CustomerData {
-  priceId: string;
-  successUrl?: string;
-  cancelUrl?: string;
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  programType: 'ultra-deluxe' | 'golden-standard';
 }
 
 class StripeService {
   private stripe: Stripe | null = null;
-  private readonly apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  private readonly apiUrl = process.env.NODE_ENV === 'production' 
+    ? '/.netlify/functions' 
+    : 'http://localhost:8888/.netlify/functions';
 
   async getStripe(): Promise<Stripe | null> {
     if (!this.stripe) {
@@ -26,48 +23,32 @@ class StripeService {
     return this.stripe;
   }
 
-  async createCheckoutSession(data: CheckoutSessionData): Promise<string> {
+  async createPaymentIntent(data: CustomerData): Promise<{ clientSecret: string; amount: number }> {
     try {
-      const response = await axios.post(`${this.apiUrl}/stripe/create-checkout-session`, {
-        ...data,
-        successUrl: data.successUrl || `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: data.cancelUrl || `${window.location.origin}/payment-cancel`,
-        metadata: {
-          customerName: data.name,
-          customerEmail: data.email,
-          customerPhone: data.phone,
-          timestamp: new Date().toISOString()
-        }
-      });
-      
-      return response.data.sessionId;
+      const response = await axios.post(`${this.apiUrl}/payment`, data);
+      return response.data;
     } catch (error) {
-      console.error('Error creating checkout session:', error);
+      console.error('Error creating payment intent:', error);
       throw error;
     }
   }
 
-  async redirectToCheckout(sessionId: string): Promise<void> {
+  async confirmPayment(clientSecret: string, cardElement: any, customerData: CustomerData) {
     const stripe = await this.getStripe();
     if (!stripe) {
       throw new Error('Stripe not loaded');
     }
 
-    const { error } = await stripe.redirectToCheckout({ sessionId });
-    if (error) {
-      console.error('Stripe redirect error:', error);
-      throw error;
-    }
-  }
-
-  async retrieveSession(sessionId: string): Promise<any> {
-    try {
-      const response = await axios.get(`${this.apiUrl}/stripe/session/${sessionId}`);
-      return response.data;
-    } catch (error) {
-      console.error('Error retrieving session:', error);
-      throw error;
-    }
+    return await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: cardElement,
+        billing_details: {
+          name: customerData.customerName,
+          email: customerData.customerEmail,
+          phone: customerData.customerPhone,
+        },
+      },
+    });
   }
 }
 

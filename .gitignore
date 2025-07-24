@@ -13,7 +13,7 @@ node_modules/
 # Testing
 /coverage
 
-# Producción
+# Producciï¿½n
 /build
 /dist
 
@@ -50,3 +50,6 @@ logs/
 # Carpetas temporales
 tmp/
 temp/
+
+# Local Netlify folder
+.netlify

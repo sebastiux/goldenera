@@ -1,0 +1,333 @@
+﻿// client/src/pages/JoinClub/JoinClub.scss
+.join-club-page {
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+// Hero Section
+.join-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #111 0%, #000 70%);
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+
+    .hero-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #EAC31B;
+      border-radius: 50%;
+      opacity: 0.6;
+      
+      &:nth-child(even) {
+        background: rgba(255, 255, 255, 0.8);
+      }
+      
+      &:nth-child(3n) {
+        width: 2px;
+        height: 2px;
+        background: #d4ac16;
+      }
+    }
+  }
+
+  &__container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  &__content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: clamp(2.5rem, 8vw, 6rem);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+
+    .title-pre {
+      display: block;
+      color: #ccc;
+      font-size: 0.4em;
+      font-weight: 400;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+    }
+
+    .title-main {
+      display: block;
+      background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-size: 1em;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 4px;
+        background: linear-gradient(90deg, transparent, #EAC31B, transparent);
+      }
+    }
+
+    .title-post {
+      display: block;
+      color: #888;
+      font-size: 0.25em;
+      font-weight: 300;
+      font-style: italic;
+      margin-top: 1.5rem;
+      line-height: 1.4;
+    }
+  }
+
+  &__subtitle {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__stats {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    margin-top: 4rem;
+
+    .stat-item {
+      text-align: center;
+
+      .stat-number {
+        display: block;
+        font-size: 3rem;
+        font-weight: 900;
+        color: #EAC31B;
+        line-height: 1;
+      }
+
+      .stat-label {
+        display: block;
+        font-size: 0.9rem;
+        color: #888;
+        margin-top: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+  }
+
+  &__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+
+    .scroll-arrow {
+      width: 2px;
+      height: 30px;
+      background: #EAC31B;
+      margin: 0 auto 1rem;
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 8px solid #EAC31B;
+      }
+    }
+  }
+}
+
+// Testimonial Section
+.join-testimonial {
+  padding: 8rem 0;
+  background: linear-gradient(135deg, #111 0%, #0a0a0a 100%);
+
+  &__container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .testimonial-content {
+    text-align: center;
+    position: relative;
+  }
+
+  .testimonial-quote {
+    position: relative;
+    margin-bottom: 3rem;
+
+    .quote-icon {
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    p {
+      font-size: 1.5rem;
+      line-height: 1.6;
+      color: #ddd;
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+  }
+
+  .testimonial-author {
+    .author-info {
+      h4 {
+        font-size: 1.2rem;
+        color: #EAC31B;
+        margin-bottom: 0.5rem;
+      }
+
+      span {
+        color: #888;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+// Final CTA Section
+.join-final-cta {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #000 0%, #111 100%);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, rgba(234, 195, 27, 0.1) 0%, transparent 70%);
+  }
+
+  &__container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .final-cta-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+
+    span {
+      display: block;
+      color: #fff;
+
+      &.golden-text {
+        background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+
+  .final-cta-text {
+    font-size: 1.3rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .join-hero {
+    &__stats {
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 3rem;
+
+      .stat-item {
+        .stat-number {
+          font-size: 2.5rem;
+        }
+      }
+    }
+
+    &__subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .join-testimonial {
+    padding: 4rem 0;
+
+    .testimonial-quote {
+      p {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .join-final-cta {
+    padding: 4rem 0;
+
+    .final-cta-text {
+      font-size: 1.1rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .join-hero {
+    &__container {
+      padding: 0 1rem;
+    }
+
+    &__title {
+      .title-post {
+        font-size: 0.3em;
+      }
+    }
+  }
+}
