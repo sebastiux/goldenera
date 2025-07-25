@@ -1,16 +1,14 @@
-﻿// netlify/functions/payment.js
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+﻿const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Content-Type': 'application/json'
+};
 
 exports.handler = async (event, context) => {
-  console.log('=== PAYMENT FUNCTION START ===');
-  console.log('Stripe key exists:', !!process.env.STRIPE_SECRET_KEY);
-  
-  const headers = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Content-Type': 'application/json'
-  };
+  console.log('💳 Payment function called');
 
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers, body: '' };
@@ -26,10 +24,23 @@ exports.handler = async (event, context) => {
 
   try {
     const data = JSON.parse(event.body);
-    console.log('Parsed data:', data);
+    console.log('📝 Data received:', { 
+      name: data.customerName, 
+      email: data.customerEmail,
+      program: data.programType 
+    });
+
+    // Validar datos requeridos
+    if (!data.customerName || !data.customerEmail || !data.programType) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'Faltan datos requeridos' })
+      };
+    }
 
     const amount = data.programType === 'ultra-deluxe' ? 3500000 : 350000;
-    console.log('Amount to charge:', amount);
+    console.log('💰 Amount:', amount, 'centavos MXN');
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
@@ -44,7 +55,7 @@ exports.handler = async (event, context) => {
       automatic_payment_methods: { enabled: true }
     });
 
-    console.log('Payment intent created:', paymentIntent.id);
+    console.log('✅ PaymentIntent created:', paymentIntent.id);
 
     return {
       statusCode: 200,
@@ -54,14 +65,15 @@ exports.handler = async (event, context) => {
         amount: amount / 100
       })
     };
+
   } catch (error) {
-    console.error('ERROR in payment function:', error);
+    console.error('❌ Payment error:', error);
     return {
       statusCode: 500,
       headers,
       body: JSON.stringify({ 
         error: error.message,
-        type: error.type
+        type: error.type || 'unknown_error'
       })
     };
   }

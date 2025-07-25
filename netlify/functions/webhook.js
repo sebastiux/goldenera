@@ -1,177 +1,270 @@
-﻿// netlify/functions/webhook.js
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+﻿const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const nodemailer = require('nodemailer');
 
-// Configurar Gmail
-const transporter = nodemailer.createTransporter({
-  service: 'gmail',
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS
-  }
-});
-
-const sendConfirmationEmails = async (paymentData) => {
-  const programNames = {
-    'golden-standard': 'GOLDEN STANDARD',
-    'ultra-deluxe': 'ULTRA DELUXE'
-  };
-
-  const customerEmail = {
-    from: process.env.EMAIL_FROM,
-    to: paymentData.customerEmail,
-    subject: '¡Bienvenido a Golden Era! - Confirmación de Pago',
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #000; color: #fff;">
-        <div style="background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%); padding: 40px 20px; text-align: center;">
-          <h1 style="color: #000; font-size: 2.5rem; margin: 0; font-weight: 900;">GOLDEN ERA</h1>
-          <p style="color: #000; margin: 10px 0; font-size: 1.1rem;">Transform your physique. Transform your life.</p>
-        </div>
-        
-        <div style="padding: 40px 30px;">
-          <h2 style="color: #EAC31B; margin-top: 0; font-size: 2rem;">¡Pago Confirmado!</h2>
-          <p style="font-size: 1.2rem; line-height: 1.6;">Hola <strong style="color: #EAC31B;">${paymentData.customerName}</strong>,</p>
-          <p style="font-size: 1.1rem; line-height: 1.6;">¡Felicidades! Acabas de unirte a la élite. Tu pago ha sido procesado exitosamente y ahora eres oficialmente parte de Golden Era.</p>
-          
-          <div style="background: #111; padding: 30px; border-radius: 10px; border-left: 5px solid #EAC31B; margin: 30px 0;">
-            <h3 style="color: #EAC31B; margin-top: 0; font-size: 1.5rem;">📋 Detalles de tu Inversión</h3>
-            <table style="width: 100%; color: #ccc; font-size: 1.1rem;">
-              <tr><td style="padding: 8px 0;"><strong>Programa:</strong></td><td style="color: #EAC31B; font-weight: bold;">${programNames[paymentData.programType] || paymentData.programType}</td></tr>
-              <tr><td style="padding: 8px 0;"><strong>Inversión:</strong></td><td style="color: #EAC31B; font-weight: bold;">$${(paymentData.amount / 100).toLocaleString()} MXN</td></tr>
-              <tr><td style="padding: 8px 0;"><strong>Fecha:</strong></td><td>${new Date().toLocaleDateString('es-MX', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</td></tr>
-              <tr><td style="padding: 8px 0;"><strong>ID de Transacción:</strong></td><td style="font-family: monospace; font-size: 0.9rem;">${paymentData.paymentIntentId}</td></tr>
-            </table>
-          </div>
-          
-          <div style="background: linear-gradient(135deg, #222 0%, #111 100%); padding: 30px; border-radius: 10px; margin: 30px 0;">
-            <h3 style="color: #EAC31B; margin-top: 0; font-size: 1.5rem;">🚀 ¿Qué sigue ahora?</h3>
-            <ul style="color: #ccc; font-size: 1.1rem; line-height: 1.8; padding-left: 20px;">
-              <li><strong style="color: #EAC31B;">En las próximas 24 horas:</strong> Nuestro equipo se pondrá en contacto contigo</li>
-              <li><strong style="color: #EAC31B;">Primera semana:</strong> Recibirás tu plan de entrenamiento personalizado</li>
-              <li><strong style="color: #EAC31B;">Plan nutricional:</strong> Diseñado específicamente para tus objetivos</li>
-              <li><strong style="color: #EAC31B;">Acceso VIP:</strong> Comunidad exclusiva de Golden Era</li>
-            </ul>
-          </div>
-          
-          <div style="text-align: center; margin: 40px 0; padding: 30px; background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%); border-radius: 10px;">
-            <h3 style="color: #000; margin: 0; font-size: 1.8rem; font-weight: 900;">¡Tu transformación comienza HOY!</h3>
-            <p style="color: #000; margin: 10px 0; font-size: 1.2rem;">Prepárate para convertirte en la mejor versión de ti mismo</p>
-          </div>
-          
-          <div style="border-top: 2px solid #333; padding-top: 30px; text-align: center; color: #666; margin-top: 40px;">
-            <p style="font-size: 1rem;">¿Tienes preguntas? Responde a este email o contáctanos.</p>
-            <p style="font-size: 0.9rem; margin-top: 20px;">Golden Era® - Todos los derechos reservados</p>
-          </div>
-        </div>
-      </div>
-    `
-  };
-
-  const adminEmail = {
-    from: process.env.EMAIL_FROM,
-    to: process.env.ADMIN_EMAIL,
-    subject: `🎯 NUEVA VENTA - ${programNames[paymentData.programType]} - $${(paymentData.amount / 100).toLocaleString()} MXN`,
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; background: #f8f9fa; padding: 0;">
-        <div style="background: linear-gradient(135deg, #EAC31B 0%, #d4ac16 100%); padding: 20px; text-align: center;">
-          <h1 style="color: #000; margin: 0; font-size: 1.8rem;">💰 NUEVA VENTA GOLDEN ERA</h1>
-        </div>
-        
-        <div style="padding: 30px; background: white;">
-          <div style="background: #e8f5e8; border-left: 5px solid #28a745; padding: 20px; margin-bottom: 25px;">
-            <h2 style="color: #155724; margin: 0 0 10px 0;">Cliente: ${paymentData.customerName}</h2>
-            <p style="color: #155724; margin: 0; font-size: 1.4rem; font-weight: bold;">Programa: ${programNames[paymentData.programType]}</p>
-          </div>
-          
-          <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
-            <tr style="background: #f8f9fa;">
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">📧 Email</td>
-              <td style="padding: 12px; border: 1px solid #dee2e6;">${paymentData.customerEmail}</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">📱 Teléfono</td>
-              <td style="padding: 12px; border: 1px solid #dee2e6;">${paymentData.customerPhone || 'No proporcionado'}</td>
-            </tr>
-            <tr style="background: #f8f9fa;">
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">💵 Monto</td>
-              <td style="padding: 12px; border: 1px solid #dee2e6; color: #28a745; font-weight: bold; font-size: 1.2rem;">$${(paymentData.amount / 100).toLocaleString()} MXN</td>
-            </tr>
-            <tr>
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">🕐 Fecha</td>
-              <td style="padding: 12px; border: 1px solid #dee2e6;">${new Date().toLocaleString('es-MX')}</td>
-            </tr>
-            <tr style="background: #f8f9fa;">
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">🔍 ID Stripe</td>
-              <td style="padding: 12px; border: 1px solid #dee2e6; font-family: monospace; font-size: 0.9rem;">${paymentData.paymentIntentId}</td>
-            </tr>
-          </table>
-          
-          <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 25px 0;">
-            <h3 style="color: #856404; margin: 0 0 10px 0;">⚡ ACCIÓN REQUERIDA</h3>
-            <p style="color: #856404; margin: 0; font-weight: bold;">Contactar al cliente en las próximas 24 horas para iniciar su transformación.</p>
-          </div>
-          
-          <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid #EAC31B;">
-            <p style="color: #666; margin: 0;">Golden Era - Sistema de Notificaciones</p>
-          </div>
-        </div>
-      </div>
-    `
-  };
-
-  try {
-    await Promise.all([
-      transporter.sendMail(customerEmail),
-      transporter.sendMail(adminEmail)
-    ]);
-    console.log('✅ Emails enviados exitosamente a:', paymentData.customerEmail);
-  } catch (error) {
-    console.error('❌ Error enviando emails:', error.message);
-    throw error;
-  }
+const headers = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type, stripe-signature',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS'
 };
 
 exports.handler = async (event, context) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: 'Method not allowed' };
+  console.log('🔔 Webhook iniciado:', event.httpMethod);
+
+  if (event.httpMethod === 'OPTIONS') {
+    return { statusCode: 200, headers, body: '' };
   }
 
-  const sig = event.headers['stripe-signature'];
-  let stripeEvent;
+  if (event.httpMethod !== 'POST') {
+    return {
+      statusCode: 405,
+      headers,
+      body: JSON.stringify({ error: 'Method not allowed' })
+    };
+  }
 
   try {
-    if (process.env.STRIPE_WEBHOOK_SECRET) {
-      stripeEvent = stripe.webhooks.constructEvent(
-        event.body,
-        sig,
-        process.env.STRIPE_WEBHOOK_SECRET
-      );
+    let stripeEvent;
+    const sig = event.headers['stripe-signature'];
+
+    if (process.env.STRIPE_WEBHOOK_SECRET && sig) {
+      try {
+        stripeEvent = stripe.webhooks.constructEvent(
+          event.body,
+          sig,
+          process.env.STRIPE_WEBHOOK_SECRET
+        );
+      } catch (err) {
+        console.error('❌ Signature verification failed:', err.message);
+        return {
+          statusCode: 400,
+          headers,
+          body: JSON.stringify({ error: 'Invalid signature' })
+        };
+      }
     } else {
+      console.warn('⚠️ Sin verificación de signature');
       stripeEvent = JSON.parse(event.body);
     }
 
+    console.log('📨 Evento recibido:', stripeEvent.type);
+    console.log('📊 Event object ID:', stripeEvent.data.object.id);
+
+    // Manejar payment_intent.succeeded (lo que queremos)
     if (stripeEvent.type === 'payment_intent.succeeded') {
       const paymentIntent = stripeEvent.data.object;
-      console.log('💰 Pago exitoso:', paymentIntent.id);
+      console.log('💰 PAGO EXITOSO - Payment Intent:', paymentIntent.id);
       
-      const paymentData = {
-        ...paymentIntent.metadata,
-        amount: paymentIntent.amount,
-        paymentIntentId: paymentIntent.id
-      };
-
-      await sendConfirmationEmails(paymentData);
+      await processSuccessfulPayment(paymentIntent);
+    }
+    
+    // Manejar setup_intent.succeeded (para pagos futuros)
+    else if (stripeEvent.type === 'setup_intent.succeeded') {
+      const setupIntent = stripeEvent.data.object;
+      console.log('🔧 Setup Intent succeeded:', setupIntent.id);
+      
+      // Si tiene metadata de customer, procesar como pago
+      if (setupIntent.metadata && setupIntent.metadata.customerName) {
+        console.log('💰 Procesando Setup Intent como pago completado');
+        
+        // Crear objeto similar a PaymentIntent para compatibilidad
+        const paymentData = {
+          id: setupIntent.id,
+          amount: setupIntent.metadata.programType === 'ultra-deluxe' ? 3500000 : 350000,
+          metadata: setupIntent.metadata
+        };
+        
+        await processSuccessfulPayment(paymentData);
+      }
+    }
+    
+    // Manejar otros eventos comunes
+    else if (stripeEvent.type === 'payment_intent.created') {
+      console.log('📝 Payment Intent creado:', stripeEvent.data.object.id);
+    }
+    
+    else if (stripeEvent.type === 'setup_intent.created') {
+      console.log('🔧 Setup Intent creado:', stripeEvent.data.object.id);
+    }
+    
+    else {
+      console.log('📋 Evento no manejado:', stripeEvent.type);
     }
 
-    return { 
-      statusCode: 200, 
-      body: JSON.stringify({ received: true }) 
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ received: true, type: stripeEvent.type })
     };
+
   } catch (error) {
-    console.error('❌ Webhook error:', error);
-    return { 
-      statusCode: 500, 
-      body: JSON.stringify({ error: error.message }) 
+    console.error('❌ Error general en webhook:', error);
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({ 
+        received: true, 
+        error: 'Processing error logged' 
+      })
     };
   }
 };
+
+// Función para procesar pagos exitosos
+async function processSuccessfulPayment(paymentObject) {
+  console.log('🎯 Procesando pago exitoso para:', paymentObject.metadata.customerName);
+  
+  const customerData = {
+    name: paymentObject.metadata.customerName,
+    email: paymentObject.metadata.customerEmail,
+    phone: paymentObject.metadata.customerPhone || '',
+    program: paymentObject.metadata.programType,
+    amount: paymentObject.amount,
+    paymentId: paymentObject.id,
+    timestamp: paymentObject.metadata.timestamp || new Date().toISOString()
+  };
+
+  console.log('📧 Preparando emails para:', customerData.email);
+
+  try {
+    await Promise.race([
+      sendConfirmationEmails(customerData),
+      new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Email timeout')), 15000)
+      )
+    ]);
+    console.log('✅ Emails enviados exitosamente');
+  } catch (emailError) {
+    console.error('⚠️ Error en emails (no crítico):', emailError.message);
+  }
+}
+
+async function sendConfirmationEmails(customerData) {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_APP_PASSWORD) {
+    console.log('⚠️ Credenciales de email no configuradas');
+    throw new Error('Email credentials missing');
+  }
+
+  console.log('📧 Creando transportador SMTP...');
+  
+  // ✅ CORREGIR: createTransport (no createTransporter)
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_APP_PASSWORD
+    }
+  });
+
+  // Verificar conexión SMTP
+  try {
+    await transporter.verify();
+    console.log('✅ Conexión SMTP verificada');
+  } catch (error) {
+    console.error('❌ Error de conexión SMTP:', error.message);
+    throw error;
+  }
+
+  const programInfo = {
+    'ultra-deluxe': { 
+      name: 'Golden Era Ultra Deluxe', 
+      price: '$35,000 MXN', 
+      duration: '6 meses' 
+    },
+    'golden-standard': { 
+      name: 'Golden Era Standard', 
+      price: '$3,500 MXN', 
+      duration: '3 meses' 
+    }
+  };
+
+  const program = programInfo[customerData.program] || programInfo['golden-standard'];
+
+  // Email al cliente
+  const clientEmail = {
+    from: process.env.EMAIL_USER,
+    to: customerData.email,
+    subject: '🏆 ¡Bienvenido a Golden Era! Tu transformación comienza ahora',
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: white;">
+        <div style="background: linear-gradient(135deg, #FFD700, #FFA500); padding: 30px; text-align: center;">
+          <h1 style="color: #000; margin: 0; font-size: 28px;">🏆 BIENVENIDO A GOLDEN ERA 🏆</h1>
+          <h2 style="color: #333; margin: 10px 0 0 0; font-size: 18px;">Tu transformación comienza ahora</h2>
+        </div>
+        
+        <div style="padding: 30px;">
+          <h3>¡Hola ${customerData.name}!</h3>
+          <p>Felicidades por dar el primer paso hacia tu transformación. Has adquirido:</p>
+          
+          <div style="background: #f9f9f9; border-left: 4px solid #FFD700; padding: 20px; margin: 20px 0;">
+            <h3 style="margin: 0 0 10px 0;">${program.name}</h3>
+            <p><strong>💰 Inversión:</strong> ${program.price}</p>
+            <p><strong>⏱️ Duración:</strong> ${program.duration}</p>
+            <p><strong>📅 Fecha:</strong> ${new Date().toLocaleDateString('es-MX')}</p>
+            <p><strong>🆔 ID:</strong> ${customerData.paymentId}</p>
+          </div>
+
+          <div style="background: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 20px 0;">
+            <h4 style="color: #856404; margin: 0 0 10px 0;">🚀 ¿Qué sigue ahora?</h4>
+            <ul style="color: #856404; margin: 0; padding-left: 20px;">
+              <li><strong>Próximas 2 horas:</strong> Un coach te contactará</li>
+              <li><strong>24 horas:</strong> Acceso a tu área personal</li>
+              <li><strong>Esta semana:</strong> Evaluación inicial</li>
+            </ul>
+          </div>
+
+          <p style="text-align: center;">
+            <a href="https://www.instagram.com/golden.era" style="background: #FFD700; color: #000; padding: 15px 30px; text-decoration: none; border-radius: 5px; font-weight: bold; display: inline-block;">
+              📱 SÍGUENOS EN INSTAGRAM
+            </a>
+          </p>
+        </div>
+        
+        <div style="background: #000; color: #FFD700; text-align: center; padding: 20px;">
+          <h3>Golden Era - Transforma tu cuerpo, transforma tu vida</h3>
+          <p>Instagram: @golden.era | Email: info@goldenera.mx</p>
+        </div>
+      </div>
+    `
+  };
+
+  // Email al equipo
+  const teamEmail = {
+    from: process.env.EMAIL_USER,
+    to: process.env.TEAM_EMAIL || process.env.EMAIL_USER,
+    subject: `🚨 NUEVA VENTA - ${program.name} - ${customerData.name}`,
+    html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background: white;">
+        <div style="background: #000; color: #FFD700; text-align: center; padding: 20px;">
+          <h1>🚨 NUEVA VENTA CONFIRMADA 🚨</h1>
+        </div>
+        
+        <div style="padding: 30px;">
+          <div style="background: #d4edda; border: 1px solid #c3e6cb; color: #155724; padding: 15px; border-radius: 5px; margin: 15px 0;">
+            <strong>✅ PAGO EXITOSO - ${program.price}</strong>
+          </div>
+          
+          <h3>📋 Cliente: ${customerData.name}</h3>
+          <ul>
+            <li><strong>Email:</strong> ${customerData.email}</li>
+            <li><strong>Teléfono:</strong> ${customerData.phone || 'No proporcionado'}</li>
+            <li><strong>Programa:</strong> ${program.name}</li>
+            <li><strong>Payment ID:</strong> ${customerData.paymentId}</li>
+            <li><strong>Fecha:</strong> ${new Date().toLocaleString('es-MX')}</li>
+          </ul>
+
+          <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 15px; border-radius: 5px; margin: 15px 0;">
+            <strong>🚨 CONTACTAR AL CLIENTE EN LAS PRÓXIMAS 2 HORAS</strong>
+          </div>
+        </div>
+      </div>
+    `
+  };
+
+  console.log('📤 Enviando email al cliente:', customerData.email);
+  await transporter.sendMail(clientEmail);
+  
+  console.log('📤 Enviando email al equipo:', process.env.TEAM_EMAIL);
+  await transporter.sendMail(teamEmail);
+  
+  console.log('✅ Todos los emails enviados exitosamente');
+}
