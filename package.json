@@ -1,0 +1,29 @@
+{
+  "name": "golden-era",
+  "version": "1.0.0",
+  "description": "Golden Era Fitness Platform",
+  "scripts": {
+    "build": "cd client && npm run build",
+    "start": "cd client && npm start",
+    "dev": "netlify dev",
+    "deploy": "npm run build && netlify deploy",
+    "deploy:prod": "npm run build && netlify deploy --prod",
+    "install:all": "cd client && npm install && cd ../netlify/functions && npm install",
+    "clean": "cd client && rm -rf build node_modules && cd ../netlify/functions && rm -rf node_modules"
+  },
+  "keywords": [
+    "fitness",
+    "golden-era",
+    "react",
+    "netlify"
+  ],
+  "author": "Golden Era Team",
+  "license": "MIT",
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "dependencies": {
+    "nodemailer": "^7.0.5",
+    "stripe": "^18.3.0"
+  }
+}

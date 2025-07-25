@@ -174,12 +174,23 @@
     "title": "Únete a la Élite.",
     "description": "Reclama tu respeto hoy. Únete a la élite.",
     "form": {
-      "name": "Nombre",
+      "name": "Nombre Completo",
       "phone": "Teléfono",
-      "email": "Correo electrónico",
+      "email": "Correo Electrónico",
       "submit": "COMIENZA TU ERA",
-      "successMessage": "¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.",
-      "errorMessage": "Hubo un error. Por favor intenta de nuevo."
+      "processing": "Enviando...",
+      "successMessage": "¡Perfecto! Te hemos enviado un email de confirmación. Nuestro equipo se pondrá en contacto contigo pronto.",
+      "errorMessage": "Hubo un error al enviar el formulario. Por favor intenta de nuevo.",
+      "redirectMessage": "Redirigiendo a la página de programas...",
+      "errors": {
+        "nameRequired": "El nombre es requerido",
+        "nameTooShort": "El nombre debe tener al menos 2 caracteres",
+        "nameInvalid": "El nombre solo puede contener letras y espacios",
+        "phoneRequired": "El teléfono es requerido",
+        "phoneInvalid": "Formato de teléfono inválido",
+        "emailRequired": "El email es requerido",
+        "emailInvalid": "Formato de email inválido"
+      }
     }
   },
     "about": {

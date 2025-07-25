@@ -1,93 +1,16 @@
-// src/components/ui/JoinForm/JoinForm.scss
 @import '../../../styles/abstracts/variables';
 @import '../../../styles/abstracts/mixins';
 
-// Loading screen
-.join-form--loading {
-  @include flex-center;
-  min-height: 100vh;
-  background: linear-gradient(135deg, rgba($color-black, 0.95) 0%, rgba($color-bg-dark, 0.98) 100%);
-  
-  .join-form__loader {
-    text-align: center;
-    
-    &-text {
-      @include h1-mobile;
-      @include gold-gradient-text;
-      margin-bottom: 2rem;
-      animation: pulse 1.5s ease-in-out infinite;
-    }
-    
-    &-bar {
-      width: 200px;
-      height: 4px;
-      background: rgba($color-white, 0.1);
-      border-radius: 2px;
-      overflow: hidden;
-      position: relative;
-      margin: 0 auto;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: $golden-gradient;
-        animation: loadingBar 1.5s ease-in-out infinite;
-      }
-    }
-  }
-}
-
 .join-form {
-  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, rgba($color-black, 0.95) 0%, rgba($color-bg-dark, 0.98) 100%);
-  overflow: hidden;
-  padding: 80px 20px;
-  
-  // Optimizaciones de rendimiento
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
-  
-  * {
-    // Prevenir repaints innecesarios
-    backface-visibility: hidden;
-  }
+  padding: 40px 20px;
+  position: relative;
 
-  // Canvas de partículas optimizado
-  &__particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    contain: layout style paint;
-  }
-
-  &__particle,
-  .particle,
-  .burst-particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: $color-primary;
-    border-radius: 50%;
-    box-shadow: 0 0 10px rgba($color-primary, 0.5);
-    will-change: transform, opacity;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
-
-  // Patrón de fondo premium optimizado
+  // Patrón de fondo sutil
   &::before {
     content: '';
     position: absolute;
@@ -96,1015 +19,267 @@
     right: 0;
     bottom: 0;
     background-image: 
-      radial-gradient(circle at 20% 50%, rgba($color-primary, 0.15) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba($color-primary, 0.1) 0%, transparent 50%),
-      radial-gradient(circle at 40% 20%, rgba($color-primary, 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 60% 60%, rgba($color-gold-dark, 0.08) 0%, transparent 40%);
+      radial-gradient(circle at 25% 25%, rgba($color-primary, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba($color-primary, 0.08) 0%, transparent 50%);
     pointer-events: none;
-    animation: backgroundPulse 20s ease-in-out infinite;
-    will-change: opacity;
-  }
-
-  // Grid pattern overlay optimizado
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(rgba($color-primary, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba($color-primary, 0.03) 1px, transparent 1px);
-    background-size: 50px 50px;
-    pointer-events: none;
-    opacity: 0.5;
-    animation: gridMove 30s linear infinite;
-    will-change: transform;
   }
 
   &__container {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 800px;
+    max-width: 500px;
     margin: 0 auto;
-    contain: layout style;
   }
 
   &__content {
     position: relative;
-    text-align: center;
   }
 
-  // TÍTULO ULTRA PREMIUM OPTIMIZADO
-  &__title-container {
-    position: relative;
+  &__header {
+    text-align: center;
     margin-bottom: 3rem;
-    padding: 2rem 0;
-    
-    // Efecto de resplandor de fondo
-    &::before {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 150%;
-      background: radial-gradient(
-        ellipse at center,
-        rgba($color-primary, 0.3) 0%,
-        rgba($color-primary, 0.15) 40%,
-        transparent 70%
-      );
-      filter: blur(40px);
-      animation: titleGlow 4s ease-in-out infinite alternate;
-      will-change: transform, opacity;
-    }
   }
 
   &__title {
-    position: relative;
-    z-index: 2;
-    transform: translateZ(0);
+    font-family: $font-primary;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: $font-bold;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
     
-    &-pre {
-      display: block;
-      font-family: $font-secondary;
-      font-size: 1.4rem;
-      font-weight: $font-regular;
-      color: $color-primary;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
-      opacity: 0;
-      animation: fadeInDown 1s ease-out 0.3s forwards;
-      text-shadow: 0 0 20px rgba($color-primary, 0.8);
-      
-      // Líneas decorativas
-      &::before,
-      &::after {
-        content: '';
-        display: inline-block;
-        width: 80px;
-        height: 2px;
-        background: linear-gradient(
-          to right,
-          transparent,
-          $color-primary 20%,
-          $color-gold 50%,
-          $color-primary 80%,
-          transparent
-        );
-        vertical-align: middle;
-        margin: 0 1.5rem;
-        animation: lineExpand 1.5s ease-out 0.5s both;
-      }
-    }
-    
-    &-main {
-      display: block;
-      font-family: $font-primary;
-      font-size: clamp(5rem, 12vw, 9rem);
-      font-weight: $font-bold;
-      letter-spacing: 0.08em;
-      line-height: 0.85;
-      text-transform: uppercase;
-      position: relative;
-      margin: 0.5rem 0;
-      transform: translateZ(0);
-      will-change: transform, filter;
-      
-      // Efecto de texto 3D metálico optimizado
-      color: $color-primary;
-      background: linear-gradient(
-        180deg,
-        $color-gold 0%,
-        $color-primary 15%,
-        $color-gold-dark 30%,
-        $color-primary 45%,
-        $color-white 50%,
-        $color-primary 55%,
-        $color-gold-dark 70%,
-        $color-primary 85%,
-        $color-gold 100%
-      );
-      background-size: 100% 200%;
-      background-position: 0 0;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: 
-        metalShine 4s ease-in-out infinite,
-        titleFloat 3s ease-in-out infinite,
-        titleScale 0.8s ease-out;
-      
-      // Usar filter para mejor rendimiento
-      @supports (filter: drop-shadow(0 0 0 black)) {
-        filter: 
-          drop-shadow(0 2px 0 rgba($color-gold-dark, 0.8))
-          drop-shadow(0 4px 0 rgba($color-gold-dark, 0.6))
-          drop-shadow(0 6px 0 rgba($color-gold-dark, 0.4))
-          drop-shadow(0 0 80px rgba($color-primary, 0.8))
-          drop-shadow(0 0 40px rgba($color-gold, 1));
-      }
-      
-      // Fallback para navegadores sin soporte
-      @supports not (filter: drop-shadow(0 0 0 black)) {
-        text-shadow: 
-          0 1px 0 rgba($color-gold-dark, 0.8),
-          0 2px 0 rgba($color-gold-dark, 0.7),
-          0 3px 0 rgba($color-gold-dark, 0.6),
-          0 4px 0 rgba($color-gold-dark, 0.5),
-          0 5px 0 rgba($color-gold-dark, 0.4),
-          0 6px 10px rgba($color-black, 0.6),
-          0 0 120px rgba($color-primary, 1),
-          0 0 80px rgba($color-gold, 0.8),
-          0 0 40px rgba($color-primary, 0.6);
-      }
-      
-      // Efecto de neón brillante
-      &::before {
-        content: 'GOLDEN ERA';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        color: $color-primary;
-        filter: blur(15px);
-        opacity: 0.7;
-        animation: neonPulse 2s ease-in-out infinite alternate;
-      }
-      
-      // Destello que recorre el texto
-      &::after {
-        content: '';
-        position: absolute;
-        top: -50%;
-        left: -100%;
-        width: 100%;
-        height: 200%;
-        background: linear-gradient(
-          105deg,
-          transparent 40%,
-          rgba($color-white, 0.7) 50%,
-          transparent 60%
-        );
-        animation: textShine 3s ease-in-out infinite;
-      }
-    }
-    
-    &-post {
-      display: block;
-      font-family: $font-secondary;
-      font-size: 1.1rem;
-      font-weight: $font-light;
-      color: rgba($color-white, 0.8);
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      margin-top: 1.5rem;
-      opacity: 0;
-      animation: fadeInUp 1s ease-out 0.6s forwards;
-      position: relative;
-      
-      // Efecto de brillo en el texto
-      background: linear-gradient(
-        90deg,
-        rgba($color-white, 0.6) 0%,
-        rgba($color-white, 0.9) 50%,
-        rgba($color-white, 0.6) 100%
-      );
-      background-size: 200% 100%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: subtitleShine 3s linear infinite;
-    }
-  }
+    // Gradiente dorado
+    background: linear-gradient(
+      135deg,
+      $color-gold 0%,
+      $color-primary 25%,
+      $color-white 50%,
+      $color-primary 75%,
+      $color-gold 100%
+    );
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: goldShine 3s ease-in-out infinite;
 
-  // Partículas flotantes alrededor del título
-  &__title-particles {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    
-    .particle {
-      position: absolute;
-      background: $color-primary;
-      border-radius: 50%;
-      
-      @for $i from 1 through 30 {
-        &:nth-child(#{$i}) {
-          $size: random(4) + 2px;
-          $startX: random(100) + %;
-          $startY: random(100) + %;
-          $endX: random(200) - 100px;
-          $endY: random(200) - 100px;
-          $duration: random(10) + 10s;
-          $delay: random(5) + s;
-          
-          width: $size;
-          height: $size;
-          left: $startX;
-          top: $startY;
-          opacity: 0;
-          box-shadow: 
-            0 0 #{$size * 2} rgba($color-primary, 0.8),
-            0 0 #{$size * 4} rgba($color-primary, 0.4);
-          
-          animation: 
-            particleFloat $duration ease-in-out $delay infinite,
-            particleFade $duration ease-in-out $delay infinite;
-        }
-      }
-    }
-  }
+    // Sombra sutil
+    filter: drop-shadow(0 0 30px rgba($color-primary, 0.5));
 
-  // Rayos de luz detrás del título
-  &__title-rays {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 200%;
-    height: 200%;
-    pointer-events: none;
-    opacity: 0.3;
-    
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        $color-primary 40%,
-        $color-white 50%,
-        $color-primary 60%,
-        transparent
-      );
-      transform-origin: center;
-      animation: rayRotate 20s linear infinite;
-    }
-    
-    &::after {
-      animation-delay: -10s;
+    &-highlight {
+      display: block;
+      margin-top: 0.2em;
     }
   }
 
   &__subtitle {
-    @include body-text;
-    color: rgba($color-white, 0.85);
-    margin-bottom: $spacing-lg;
-    line-height: 1.6;
+    font-family: $font-secondary;
+    font-size: 1.2rem;
+    color: rgba($color-white, 0.8);
+    line-height: 1.5;
     letter-spacing: 0.02em;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0;
-    animation: fadeIn 1s ease-out 0.8s forwards;
-
-    @include mobile {
-      font-size: 16px;
-      margin-bottom: $spacing-md;
-    }
-  }
-
-  // Barra de progreso
-  &__progress {
-    position: relative;
-    height: 4px;
-    background: rgba($color-white, 0.1);
-    border-radius: 2px;
-    margin-bottom: $spacing-xl;
-    overflow: hidden;
-
-    &-bar {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      background: $golden-gradient;
-      transform-origin: left center;
-      transform: scaleX(0);
-      box-shadow: 0 0 20px rgba($color-primary, 0.5);
-      will-change: transform;
-    }
-
-    &-text {
-      position: absolute;
-      top: -25px;
-      right: 0;
-      font-size: 0.875rem;
-      color: rgba($color-white, 0.6);
-      font-family: $font-secondary;
-    }
   }
 
   &__form {
-    background: rgba($color-white, 0.03);
+    background: rgba($color-white, 0.05);
     backdrop-filter: blur(20px);
     border: 1px solid rgba($color-primary, 0.2);
-    border-radius: 24px;
-    padding: $spacing-xl $spacing-lg;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
     box-shadow: 
-      0 20px 60px rgba($color-black, 0.5),
-      inset 0 1px 0 rgba($color-white, 0.1),
-      0 0 100px rgba($color-primary, 0.1);
-    position: relative;
-    overflow: hidden;
-    transform-style: preserve-3d;
-    perspective: 1000px;
-    contain: layout;
-    transform: translateZ(0);
-
-    // Efecto de brillo en el borde animado
-    &::before {
-      content: '';
-      position: absolute;
-      top: -3px;
-      left: -3px;
-      right: -3px;
-      bottom: -3px;
-      background: conic-gradient(
-        from 0deg at 50% 50%,
-        $color-primary,
-        transparent 60deg,
-        transparent 300deg,
-        $color-primary
-      );
-      border-radius: 24px;
-      opacity: 0;
-      z-index: -1;
-      @include transition(opacity);
-      animation: borderRotate 4s linear infinite;
-    }
-
-    &:hover::before {
-      opacity: 0.6;
-    }
+      0 20px 40px rgba($color-black, 0.3),
+      inset 0 1px 0 rgba($color-white, 0.1);
 
     @include mobile {
-      padding: $spacing-md $spacing-sm;
-      border-radius: 20px;
-      backdrop-filter: blur(10px);
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
     }
   }
 
-  &__input-wrapper {
-    margin-bottom: $spacing-md;
+  &__field {
+    margin-bottom: 1.5rem;
     position: relative;
-    transform-style: preserve-3d;
   }
 
   &__label {
-    position: absolute;
-    top: 50%;
-    left: $spacing-md;
-    transform: translateY(-50%);
+    display: block;
     font-family: $font-secondary;
-    font-size: 1rem;
-    color: rgba($color-white, 0.6);
-    pointer-events: none;
-    transition: all 0.3s ease;
-    z-index: 1;
+    font-size: 0.9rem;
+    font-weight: $font-regular; // Cambiado de $font-medium a $font-regular
+    color: rgba($color-white, 0.8);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   &__input {
     width: 100%;
-    padding: 1.4rem $spacing-md;
+    padding: 1rem 1.2rem;
     font-family: $font-secondary;
     font-size: 1rem;
-    background: rgba($color-white, 0.05);
-    border: 2px solid rgba($color-white, 0.1);
-    border-radius: 14px;
+    background: rgba($color-white, 0.08);
+    border: 2px solid rgba($color-white, 0.15);
+    border-radius: 12px;
     color: $color-white;
-    @include transition(all);
+    transition: all 0.3s ease;
     outline: none;
-    position: relative;
-    z-index: 2;
 
     &::placeholder {
-      color: transparent;
+      color: rgba($color-white, 0.4);
+      font-style: italic;
     }
 
     &:focus,
-    &:not(:placeholder-shown) {
-      background: rgba($color-white, 0.08);
-      border-color: rgba($color-primary, 0.5);
+    &--focused {
+      background: rgba($color-white, 0.12);
+      border-color: rgba($color-primary, 0.6);
       box-shadow: 
-        0 0 0 4px rgba($color-primary, 0.1),
-        0 10px 40px rgba($color-black, 0.3),
-        inset 0 1px 0 rgba($color-white, 0.1);
-      transform: translateY(-2px);
-
-      ~ .join-form__label {
-        top: -12px;
-        left: 12px;
-        font-size: 0.875rem;
-        color: $color-primary;
-        background: linear-gradient(180deg, transparent 45%, rgba($color-bg-dark, 0.95) 45%);
-        padding: 0 8px;
-      }
+        0 0 0 3px rgba($color-primary, 0.15),
+        0 8px 25px rgba($color-black, 0.2);
+      transform: translateY(-1px);
     }
 
     &--error {
-      border-color: #ff4444 !important;
-      animation: shake 0.5s ease;
+      border-color: #ff4444;
+      background: rgba(#ff4444, 0.1);
       
       &:focus {
         box-shadow: 
-          0 0 0 4px rgba(#ff4444, 0.2),
-          0 10px 40px rgba($color-black, 0.3);
+          0 0 0 3px rgba(#ff4444, 0.2),
+          0 8px 25px rgba($color-black, 0.2);
       }
     }
 
-    &--focused {
-      transform: scale(1.02);
-    }
-
     &:disabled {
-      opacity: 0.5;
+      opacity: 0.6;
       cursor: not-allowed;
     }
 
     @include mobile {
-      padding: 1rem $spacing-sm;
+      padding: 0.9rem 1rem;
       font-size: 0.95rem;
     }
   }
 
   &__error {
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    display: block;
     color: #ff4444;
-    font-size: 0.875rem;
-    margin-top: $spacing-xs;
+    font-size: 0.85rem;
     font-family: $font-secondary;
-    animation: errorSlideIn $transition-normal;
-
-    &-icon {
-      flex-shrink: 0;
-    }
+    margin-top: 0.5rem;
+    animation: errorSlideIn 0.3s ease;
   }
 
-  &__button {
-    @include button-style;
+  &__submit {
     width: 100%;
-    padding: 1.2rem $spacing-lg;
+    padding: 1.2rem 2rem;
     font-family: $font-primary;
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     font-weight: $font-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
     background: $golden-gradient;
     color: $color-black;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    margin-top: $spacing-xl;
-    border: none;
-    cursor: pointer;
-    transform-style: preserve-3d;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    will-change: transform;
+    margin-top: 1rem;
 
     &::before {
       content: '';
       position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 0;
-      height: 0;
-      background: radial-gradient(circle, rgba($color-white, 0.3) 0%, transparent 70%);
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      transition: width 0.6s, height 0.6s;
-    }
-
-    &-shine {
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
       background: linear-gradient(
-        45deg,
-        transparent 30%,
-        rgba($color-white, 0.3) 50%,
-        transparent 70%
+        90deg,
+        transparent,
+        rgba($color-white, 0.2),
+        transparent
       );
-      transform: rotate(45deg) translateX(-100%);
-      transition: transform 0.6s;
+      transition: left 0.5s ease;
     }
 
     &:hover:not(:disabled) {
-      transform: translateY(-3px) scale(1.02);
+      transform: translateY(-2px);
       box-shadow: 
-        0 20px 50px rgba($color-primary, 0.4),
-        0 10px 20px rgba($color-black, 0.3),
-        inset 0 -2px 0 rgba($color-black, 0.1);
-
-      .join-form__button-shine {
-        transform: rotate(45deg) translateX(100%);
-      }
+        0 15px 35px rgba($color-primary, 0.4),
+        0 5px 15px rgba($color-black, 0.2);
 
       &::before {
-        width: 600px;
-        height: 600px;
-      }
-
-      .join-form__button-glow {
-        opacity: 1;
+        left: 100%;
       }
     }
 
     &:active:not(:disabled) {
-      transform: translateY(-1px) scale(1);
+      transform: translateY(0);
     }
 
     &:disabled {
       opacity: 0.7;
       cursor: not-allowed;
-      background: linear-gradient(135deg, $gray 0%, $dark-gray 100%);
+      transform: none;
     }
 
     @include mobile {
-      padding: 1rem $spacing-sm;
-      font-size: 1.05rem;
+      padding: 1rem 1.5rem;
+      font-size: 1rem;
     }
   }
 
-  &__button-text {
-    position: relative;
-    z-index: 1;
+  &__spinner {
     display: inline-block;
-  }
-
-  &__button-glow {
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(
-      circle,
-      rgba($color-primary, 0.4) 0%,
-      transparent 70%
-    );
-    opacity: 0;
-    @include transition(opacity);
-    pointer-events: none;
-    filter: blur(20px);
-  }
-
-  &__button-loading {
-    @include flex-center;
-    gap: 0.75rem;
-  }
-
-  &__button-spinner {
     width: 20px;
     height: 20px;
-    border: 3px solid rgba($color-black, 0.3);
+    border: 2px solid rgba($color-black, 0.3);
+    border-radius: 50%;
     border-top-color: $color-black;
-    border-radius: 50%;
     animation: spin 0.8s linear infinite;
-  }
-
-  &__ripple {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    background: rgba($color-white, 0.5);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
+    margin-right: 0.5rem;
   }
 
   &__message {
-    margin-top: $spacing-md;
-    padding: $spacing-sm $spacing-md;
-    border-radius: 12px;
+    margin-top: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
     font-family: $font-secondary;
     font-size: 0.95rem;
-    animation: messageSlideIn $transition-slow;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-
-    &-icon {
-      flex-shrink: 0;
-    }
+    text-align: center;
+    animation: messageSlideIn 0.4s ease;
 
     &--success {
-      background: linear-gradient(135deg, rgba(#4caf50, 0.1) 0%, rgba(#4caf50, 0.05) 100%);
+      background: rgba(#4caf50, 0.15);
       border: 1px solid rgba(#4caf50, 0.3);
       color: #4caf50;
-      box-shadow: 0 4px 20px rgba(#4caf50, 0.2);
     }
 
     &--error {
-      background: linear-gradient(135deg, rgba(#ff4444, 0.1) 0%, rgba(#ff4444, 0.05) 100%);
+      background: rgba(#ff4444, 0.15);
       border: 1px solid rgba(#ff4444, 0.3);
       color: #ff4444;
-      box-shadow: 0 4px 20px rgba(#ff4444, 0.2);
-    }
-  }
-
-  // Elementos decorativos mejorados
-  &__decoration {
-    position: absolute;
-    pointer-events: none;
-
-    &--1 {
-      top: -150px;
-      right: -150px;
-      width: 400px;
-      height: 400px;
-      background: radial-gradient(
-        circle,
-        rgba($color-primary, 0.15) 0%,
-        transparent 70%
-      );
-      filter: blur(60px);
-      animation: float 8s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    &--2 {
-      bottom: -200px;
-      left: -200px;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(
-        circle,
-        rgba($color-gold-dark, 0.1) 0%,
-        transparent 70%
-      );
-      filter: blur(80px);
-      animation: float 10s ease-in-out infinite reverse;
-      will-change: transform;
-    }
-
-    &--3 {
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 120%;
-      height: 120%;
-      background: radial-gradient(
-        circle at center,
-        transparent 0%,
-        rgba($color-black, 0.3) 50%,
-        rgba($color-black, 0.6) 100%
-      );
-      opacity: 0.5;
-    }
-  }
-
-  // Responsive optimizado
-  @include mobile {
-    &__title {
-      &-pre {
-        font-size: 0.9rem;
-        letter-spacing: 0.3em;
-        
-        &::before,
-        &::after {
-          width: 40px;
-          margin: 0 0.8rem;
-        }
-      }
-      
-      &-main {
-        font-size: 4rem;
-        // Simplificar efectos en móvil
-        animation: goldShine 4s linear infinite;
-        filter: none !important;
-        text-shadow: 0 0 20px rgba($color-primary, 0.8);
-        
-        &::before {
-          display: none;
-        }
-      }
-      
-      &-post {
-        font-size: 0.85rem;
-        letter-spacing: 0.2em;
-      }
-    }
-
-    // Desactivar efectos pesados
-    &__title-rays,
-    &__decoration--3 {
-      display: none;
-    }
-
-    // Reducir partículas
-    &__title-particles .particle:nth-child(n+16) {
-      display: none;
-    }
-  }
-
-  @include tablet {
-    padding: 60px 20px;
-
-    &__form {
-      padding: $spacing-lg $spacing-md;
-    }
-
-    &__input {
-      padding: 1.2rem $spacing-md;
-    }
-
-    &__button {
-      padding: 1.1rem $spacing-md;
-      font-size: 1.15rem;
     }
   }
 }
 
-// ANIMACIONES OPTIMIZADAS
-@keyframes loadingBar {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 100%;
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: scale(0.98);
-  }
-}
-
-@keyframes metalShine {
-  0% {
-    background-position: 0 0;
-  }
-  50% {
-    background-position: 0 100%;
-  }
-  100% {
-    background-position: 0 0;
-  }
-}
-
-@keyframes titleFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-@keyframes titleScale {
-  0% {
-    transform: scale(0) rotateY(180deg);
-    opacity: 0;
-  }
-  50% {
-    transform: scale(1.1) rotateY(90deg);
-  }
-  100% {
-    transform: scale(1) rotateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes neonPulse {
-  0% {
-    text-shadow: 
-      0 0 80px rgba($color-primary, 0.8),
-      0 0 120px rgba($color-primary, 0.6),
-      0 0 150px rgba($color-primary, 0.4);
-  }
-  100% {
-    text-shadow: 
-      0 0 100px rgba($color-primary, 1),
-      0 0 150px rgba($color-primary, 0.8),
-      0 0 200px rgba($color-primary, 0.6);
-  }
-}
-
-@keyframes textShine {
-  0% {
-    left: -100%;
-  }
-  100% {
-    left: 200%;
-  }
-}
-
-@keyframes titleGlow {
-  0% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.3;
-  }
-  50% {
-    transform: translate(-50%, -50%) scale(1.2);
-    opacity: 0.5;
-  }
-  100% {
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 0.3;
-  }
-}
-
-@keyframes lineExpand {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-  100% {
-    width: 80px;
-    opacity: 1;
-  }
-}
-
-@keyframes subtitleShine {
-  0% {
-    background-position: -100% 0;
-  }
-  100% {
-    background-position: 200% 0;
-  }
-}
-
-@keyframes particleFloat {
-  0% {
-    transform: translate(0, 0) scale(0);
-  }
-  50% {
-    transform: translate(var(--endX), var(--endY)) scale(1);
-  }
-  100% {
-    transform: translate(calc(var(--endX) * 2), calc(var(--endY) * 2)) scale(0);
-  }
-}
-
-@keyframes particleFade {
-  0%, 100% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-@keyframes rayRotate {
-  0% {
-    transform: translate(-50%, -50%) rotate(0deg) scaleX(0);
-  }
-  50% {
-    transform: translate(-50%, -50%) rotate(180deg) scaleX(1);
-  }
-  100% {
-    transform: translate(-50%, -50%) rotate(360deg) scaleX(0);
-  }
-}
-
-// Animaciones generales
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes borderRotate {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) translateX(0);
-  }
-  25% {
-    transform: translateY(-30px) translateX(10px);
-  }
-  50% {
-    transform: translateY(0) translateX(-10px);
-  }
-  75% {
-    transform: translateY(30px) translateX(5px);
-  }
-}
-
+// Animaciones
 @keyframes goldShine {
-  0% {
+  0%, 100% {
     background-position: 0% 50%;
   }
-  100% {
-    background-position: 200% 50%;
-  }
-}
-
-@keyframes backgroundPulse {
-  0%, 100% {
-    opacity: 1;
-  }
   50% {
-    opacity: 0.8;
+    background-position: 100% 50%;
   }
 }
 
-@keyframes gridMove {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(50px, 50px);
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -1130,34 +305,28 @@
   }
 }
 
-@keyframes shake {
-  0%, 100% {
-    transform: translateX(0);
-  }
-  10%, 30%, 50%, 70%, 90% {
-    transform: translateX(-5px);
-  }
-  20%, 40%, 60%, 80% {
-    transform: translateX(5px);
+// Responsive
+@include tablet {
+  .join-form {
+    padding: 30px 15px;
+
+    &__form {
+      padding: 2rem 1.5rem;
+    }
+
+    &__input {
+      padding: 0.9rem 1rem;
+    }
+
+    &__submit {
+      padding: 1.1rem 1.5rem;
+    }
   }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Media query para preferencias de movimiento reducido
+// Motion reducido
 @media (prefers-reduced-motion: reduce) {
   .join-form {
-    &__particle,
-    .particle,
-    &__title-main,
-    &__button {
-      animation: none !important;
-    }
-    
     * {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;

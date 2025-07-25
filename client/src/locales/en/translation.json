@@ -172,14 +172,25 @@
   },
   "joinElite": {
     "title": "Join the Elite.",
-    "description": "Reclaim your respect today. Join the elite.",
+    "description": "Claim your respect today. Join the elite.",
     "form": {
-      "name": "Name",
-      "phone": "Phone #",
+      "name": "Full Name",
+      "phone": "Phone",
       "email": "Email",
       "submit": "BEGIN YOUR ERA",
-      "successMessage": "Thank you for your interest! We'll be in touch with you soon.",
-      "errorMessage": "There was an error. Please try again."
+      "processing": "Sending...",
+      "successMessage": "Perfect! We've sent you a confirmation email. Our team will contact you soon.",
+      "errorMessage": "There was an error submitting the form. Please try again.",
+      "redirectMessage": "Redirecting to programs page...",
+      "errors": {
+        "nameRequired": "Name is required",
+        "nameTooShort": "Name must be at least 2 characters",
+        "nameInvalid": "Name can only contain letters and spaces",
+        "phoneRequired": "Phone is required",
+        "phoneInvalid": "Invalid phone format",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Invalid email format"
+      }
     }
   },
  "about": {
