@@ -8,8 +8,7 @@ import Coach from '../../components/ui/Coach/Coach';
 import Method from '../../components/ui/Method/Method';
 import MotivationalPhrase from '../../components/ui/MotivationalPhrase/MotivationalPhrase';
 import WhyItWorks from '../../components/ui/WhyItWorks/WhyItWorks';
-import Package from '../../components/ui/Package/Package';
-//import Partners from '../../components/ui/Partners/Partners';
+import PricingPlansWithTimer from '../../components/Pricing/PricingPlansWithTimer';
 import JoinForm from '../../components/ui/JoinForm/JoinForm';
 import './Home.scss';
 
@@ -32,7 +31,7 @@ const Home: React.FC = () => {
       <Method />
       <MotivationalPhrase />
       <WhyItWorks />
-      <Package />
+      <PricingPlansWithTimer />
       <JoinForm />
     </div>
   );

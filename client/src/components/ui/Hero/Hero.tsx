@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
@@ -7,6 +8,7 @@ import './Hero.scss';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   const heroRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -48,6 +50,10 @@ const Hero: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  const handleLogoClick = () => {
+    navigate('/join');
+  };
+
   return (
     <section ref={heroRef} className="hero-section">
       <div className="hero-bg">
@@ -59,7 +65,7 @@ const Hero: React.FC = () => {
           playsInline
           className="hero-video"
         >
-          <source src={videos.mamado1} type="video/mp4" />
+          <source src={videos.mamadomain} type="video/mp4" />
         </video>
         <div className="hero-overlay" />
       </div>
@@ -70,7 +76,7 @@ const Hero: React.FC = () => {
           {t('home.hero.goldenMind')}
         </h1>
         
-        <div ref={logoRef} className="hero-logo">
+        <div ref={logoRef} className="hero-logo" onClick={handleLogoClick} style={{cursor: 'pointer'}}>
           <img src={logos.goldenEraAmarillo} alt="Golden Era" />
         </div>
       </div>

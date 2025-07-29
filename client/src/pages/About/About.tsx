@@ -1,18 +1,26 @@
 // client/src/pages/About/About.tsx
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslation } from 'react-i18next';
+import { ourMission, ourVision, ourValues, absolutePower } from '../../assets/images';
 import './About.scss';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const About: React.FC = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const sectionRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const contentRefs = useRef<HTMLDivElement[]>([]);
   const imageRefs = useRef<HTMLImageElement[]>([]);
+
+  useEffect(() => {
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -97,6 +105,10 @@ const About: React.FC = () => {
     }
   };
 
+  const handleCTAClick = () => {
+    navigate('/join');
+  };
+
   return (
     <div className="about-page" ref={sectionRef}>
       {/* Hero Section */}
@@ -125,10 +137,11 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper">
               <div className="text-content">
-                <h2 className="section-title">
-                  <span className="arabic-overlay">مهمتنا</span>
-                  {t('about.mission.title')}
-                </h2>
+                <img 
+                  src={ourMission} 
+                  alt="Our Mission"
+                  className="section-title-image"
+                />
                 <p className="section-text">
                   {t('about.mission.text')}
                 </p>
@@ -152,10 +165,11 @@ const About: React.FC = () => {
           <div className="section-content" ref={addToRefs}>
             <div className="content-wrapper reverse">
               <div className="text-content">
-                <h2 className="section-title">
-                  <span className="arabic-overlay">رؤيتنا</span>
-                  {t('about.vision.title')}
-                </h2>
+                <img 
+                  src={ourVision} 
+                  alt="Our Vision"
+                  className="section-title-image"
+                />
                 <p className="section-text">
                   {t('about.vision.text')}
                 </p>
@@ -197,10 +211,11 @@ const About: React.FC = () => {
       <section className="about-section values-section">
         <div className="container">
           <div className="section-content" ref={addToRefs}>
-            <h2 className="section-title center">
-              <span className="arabic-overlay">قيمنا</span>
-              {t('about.values.title')}
-            </h2>
+            <img 
+              src={ourValues} 
+              alt="Our Values"
+              className="section-title-image center"
+            />
             <div className="values-grid">
               <div className="value-card">
                 <div className="value-icon">⚔️</div>
@@ -229,46 +244,48 @@ const About: React.FC = () => {
 
       {/* Power Section */}
       <section className="about-section power-section">
-  <div className="container">
-    <div className="section-content" ref={addToRefs}>
-      <div className="power-header">
-        <h2 className="section-title center">
-          <span className="arabic-decoration">القوة المطلقة</span>
-          {t('about.power.title')}
-        </h2>
-        <p className="section-subtitle">
-          {t('about.power.subtitle')}
-        </p>
-      </div>
-      <div className="power-gallery">
-        <div className="gallery-item">
-          <img 
-            ref={addToImageRefs}
-            src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" 
-            alt="Intense Training" 
-            className="gallery-image"
-          />
+        <div className="container">
+          <div className="section-content" ref={addToRefs}>
+            <div className="power-header">
+              <img 
+                src={absolutePower} 
+                alt="Absolute Power"
+                className="section-title-image center"
+              />
+              <p className="section-subtitle">
+                {t('about.power.subtitle')}
+              </p>
+            </div>
+            <div className="power-gallery">
+              <div className="gallery-item">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=600&q=80" 
+                  alt="Intense Training" 
+                  className="gallery-image"
+                />
+              </div>
+              <div className="gallery-item">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1530822847156-5df684ec5ee1?w=600&q=80" 
+                  alt="Champion Mindset" 
+                  className="gallery-image"
+                />
+              </div>
+              <div className="gallery-item">
+                <img 
+                  ref={addToImageRefs}
+                  src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" 
+                  alt="Elite Performance" 
+                  className="gallery-image"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="gallery-item">
-          <img 
-            ref={addToImageRefs}
-            src="https://images.unsplash.com/photo-1530822847156-5df684ec5ee1?w=600&q=80" 
-            alt="Champion Mindset" 
-            className="gallery-image"
-          />
-        </div>
-        <div className="gallery-item">
-          <img 
-            ref={addToImageRefs}
-            src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&q=80" 
-            alt="Elite Performance" 
-            className="gallery-image"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
+
       {/* CTA Section */}
       <section className="about-section cta-section">
         <div className="container">
@@ -279,7 +296,7 @@ const About: React.FC = () => {
             <p className="cta-text">
               {t('about.cta.text')}
             </p>
-            <button className="cta-button">
+            <button className="cta-button" onClick={handleCTAClick}>
               {t('about.cta.button')}
             </button>
           </div>

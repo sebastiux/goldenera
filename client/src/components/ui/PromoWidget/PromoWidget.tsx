@@ -195,10 +195,6 @@ const PromoWidget: React.FC<PromoWidgetProps> = ({ isActive, onClose }) => {
             <span className="timer-value">{formatTime(timeLeft)}</span>
           </div>
 
-          <div className="promo-widget__price">
-            <span className="price-old">$7000MXN</span>
-            <span className="price-new">$3500MXN</span>
-          </div>
 
           <button className="promo-widget__cta" onClick={handleJoinNow}>
             <span>Únete Ahora</span>

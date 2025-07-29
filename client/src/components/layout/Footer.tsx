@@ -28,10 +28,10 @@ const Footer: React.FC = () => {
 
           {/* Phone Link */}
           <a 
-            href="tel:+971501234567" 
+            href="tel:+52 55 7696 6262" 
             className="footer-link footer-phone"
           >
-            +971 50 123 4567
+            +52 55 7696 6262
           </a>
         </div>
       </div>

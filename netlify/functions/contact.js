@@ -107,7 +107,7 @@ const userEmail = `
       </div>
       
       <div style="text-align: center; margin: 20px 0;">
-        <a href="${process.env.CLIENT_URL || 'https://goldenerademo.netlify.app'}
+        <a href="${process.env.CLIENT_URL || 'https://goldeneramethod.com'}
            style="background: transparent; color: #FFD700; padding: 12px 25px; text-decoration: none; border: 2px solid #FFD700; border-radius: 25px; font-weight: bold; display: inline-block; margin-top: 10px;">
           🌐 O ver programas en la web
         </a>
@@ -126,7 +126,7 @@ const userEmail = `
     <div style="background: #333; color: white; padding: 20px; text-align: center;">
       <p style="margin: 0;"><strong>GOLDEN ERA</strong> - Donde nacen los guerreros</p>
       <p style="margin: 5px 0 0 0;">
-        📱 WhatsApp: +52 720 253 3388 | Instagram: @mateo.haces
+        📱 WhatsApp: +52 55 7696 6262 | Instagram: @mateo.haces
       </p>
     </div>
   </div>

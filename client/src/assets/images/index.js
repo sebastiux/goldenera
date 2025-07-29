@@ -42,10 +42,44 @@ import imgGal34 from './imggal34.jpeg';
 import imgGal35 from './imggal35.jpeg';
 
 
+import cellphone from './cellphone.png';
+import formulario from './formulario.png';
+import muscle from './muscle.png';
+import pagos from './pagos.jpg';
+import whyitworks3 from './whyitworks2.gif';
+import whyitworks2 from './whyitworks3.gif';
+
+
+//Titles
+import forgeyourLegacy from './forgeyourlegacy.png';
+import yourCoach from './yourcoach.png';
+import goldeneraMethod from './goldeneramethod.png';
+import whyitWorks from './whyitworks.png';
+import ourMission from './ourmission.png';
+import ourVision from './ourvision.png';
+import ourValues from './ourvalues.png';
+import absolutePower from './absolutepower.png';
+
+
+
 export const images = {
   coach: Coach,
   jointheclub: jointheclub,
   usethematerial: usethematerial,
+  cellphone: cellphone,
+  formulario: formulario,
+  muscle: muscle,
+  pagos: pagos,
+  whyitworks3: whyitworks3,
+  whyitworks2: whyitworks2,
+  forgeyourLegacy: forgeyourLegacy,
+  yourCoach: yourCoach,
+  goldeneraMethod: goldeneraMethod,
+  whyitWorks: whyitWorks,
+  ourMission: ourMission,
+  ourVision: ourVision,
+  ourValues: ourValues,
+  absolutePower: absolutePower,
   gallery: [
     imgGal1, imgGal2, imgGal3, imgGal4, imgGal5,
     imgGal6, imgGal7, imgGal8, imgGal9, imgGal10,
@@ -96,7 +130,20 @@ export {
     imgGal32,
     imgGal33,
     imgGal34,
-    imgGal35
-};
+    imgGal35,
+    cellphone,
+    formulario,
+    muscle,
+    whyitworks2,
+    whyitworks3,
+    whyitWorks,
+    forgeyourLegacy,
+    yourCoach,
+    goldeneraMethod,
+    ourMission,
+    ourVision,
+    ourValues,
+    absolutePower
+  };
 
 export default images;

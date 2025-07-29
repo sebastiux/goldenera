@@ -19,21 +19,21 @@ const Method: React.FC = () => {
       number: '01',
       title: t('home.method.steps.join.title'),
       description: t('home.method.steps.join.description'),
-      image: images.jointheclub,
+      image: images.pagos,
       color: '#FFD700'
     },
     {
       number: '02', 
       title: t('home.method.steps.material.title'),
       description: t('home.method.steps.material.description'),
-      image: images.usethematerial,
+      image: images.whyitworks2,
       color: '#FFA500'
     },
     {
       number: '03',
       title: t('home.method.steps.work.title'),
       description: t('home.method.steps.work.description'),
-      image: images.usethematerial,
+      image: images.whyitworks3,
       color: '#FF6B6B'
     }
   ];

@@ -415,3 +415,35 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
 }
+.section-title-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 0 auto 56px;
+  display: block;
+  position: relative;
+  perspective: 1000px;
+  
+  // Mobile
+  @include mobile {
+    max-width: 300px;
+    margin-bottom: 40px;
+  }
+  
+  // Tablet  
+  @include tablet {
+    max-width: 450px;
+    margin-bottom: 80px;
+  }
+  
+  // Desktop
+  @include desktop {
+    max-width: 600px;
+    margin-bottom: 100px;
+  }
+  
+  // Extra large screens
+  @media (min-width: 1440px) {
+    max-width: 700px;
+  }
+}

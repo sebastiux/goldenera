@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { forgeyourLegacy } from '../../../assets/images'; // Agrega este import
 import './Philosophy.scss';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -90,20 +91,18 @@ const Philosophy: React.FC = () => {
   return (
     <section className="philosophy-section" ref={sectionRef}>
       <div className="philosophy-container">
-        {/* Forge Your Legacy */}
+        {/* Forge Your Legacy - MODIFICADO PARA USAR IMAGEN */}
         <div className="philosophy-legacy-block">
-          <div className="philosophy-title-wrapper">
-            <span className="philosophy-arabic-overlay" aria-hidden="true">صياغة</span>
-            <h2 className="philosophy-section-title">FORGE YOUR</h2>
-          </div>
-          <div className="philosophy-title-wrapper">
-            <span className="philosophy-arabic-overlay" aria-hidden="true">تراثك</span>
-            <h2 className="philosophy-section-title">LEGACY</h2>
-          </div>
+          <img 
+            src={forgeyourLegacy} 
+            alt="Forge Your Legacy"
+            className="philosophy-title-image"
+          />
           <p className="philosophy-section-description">
             {t('home.philosophy.legacy')}
           </p>
         </div>
+        
         {/* CTA Button */}
         <button className="philosophy-cta-button" aria-label="Begin your fitness journey">
           {t('home.philosophy.cta')}

@@ -28,36 +28,34 @@ const PricingPlans: React.FC = () => {
   const plans: Plan[] = [
     {
       id: 'golden-standard',
-      name: 'GOLDEN STANDARD',
+      name: t('home.packages.standard.name'),
       price: 3500,
-      originalPrice: 5000,
+      originalPrice: 7000,
       features: [
-        'Plan de entrenamiento personalizado',
-        'Plan nutricional básico',
-        'Seguimiento semanal',
-        'Acceso a la comunidad Golden Era',
-        'Video llamadas mensuales',
-        'Soporte por WhatsApp'
+        t('home.packages.features.coaching'),
+        t('home.packages.features.apps'),
+        t('home.packages.features.recipes'),
+        t('home.packages.features.support'),
+        t('home.packages.features.tracking')
       ],
       badge: 'POPULAR'
     },
     {
       id: 'ultra-deluxe',
-      name: 'ULTRA DELUXE',
+      name: t('home.packages.deluxe.name'),
       price: 35000,
-      originalPrice: 50000,
+      originalPrice: 70000,
       features: [
-        'Todo lo del Golden Standard',
-        'Entrenamiento 1-on-1 personal',
-        'Plan nutricional premium completo',
-        'Seguimiento diario personalizado',
-        'Acceso prioritario al coach',
-        'Video llamadas semanales',
-        'Análisis corporal completo',
-        'Suplementación personalizada',
-        'Acceso a eventos exclusivos'
+        t('home.packages.features.coaching'),
+        t('home.packages.features.apps'),
+        t('home.packages.features.recipes'),
+        t('home.packages.features.merch'),
+        t('home.packages.features.support'),
+        t('home.packages.features.tracking'),
+        t('home.packages.features.presential'),
+        t('home.packages.features.location')
       ],
-      badge: 'ÉLITE',
+      badge: t('home.packages.most_exclusive'),
       popular: true
     }
   ];
@@ -165,9 +163,9 @@ const PricingPlans: React.FC = () => {
       <div className="pricing-plans__container">
         <div className="pricing-plans__header">
           <h2 className="pricing-plans__title" ref={titleRef}>
-            <span className="title-part">ELIGE TU</span>
-            <span className="title-main">PROGRAMA</span>
-            <span className="title-sub">Únete a la élite. Solo 50 guerreros por año.</span>
+            <span className="title-part">{t('home.packages.title').split(' ')[0]} {t('home.packages.title').split(' ')[1]}</span>
+            <span className="title-main">{t('home.packages.title').split(' ')[2]}</span>
+            <span className="title-sub">{t('home.packages.subtitle')}</span>
           </h2>
         </div>
 
@@ -191,7 +189,7 @@ const PricingPlans: React.FC = () => {
                   <span className="pricing-card__price">
                     {formatPrice(plan.price)}
                   </span>
-                  <span className="pricing-card__period">única vez</span>
+                  <span className="pricing-card__period">12 weeks</span>
                 </div>
               </div>
 
@@ -212,7 +210,7 @@ const PricingPlans: React.FC = () => {
                 className="pricing-card__button"
                 onClick={() => handleSelectPlan(plan)}
               >
-                <span className="button-text">COMENZAR AHORA</span>
+                <span className="button-text">{t('home.packages.cta')}</span>
                 <span className="button-glow"></span>
               </button>
             </div>
@@ -221,7 +219,7 @@ const PricingPlans: React.FC = () => {
 
         <div className="pricing-plans__guarantee">
           <div className="guarantee-badge">
-            <span className="guarantee-text">GARANTÍA DE 30 DÍAS</span>
+            <span className="guarantee-text">GOLDEN QUALITY</span>
             <span className="guarantee-subtext">Tu transformación o tu dinero de vuelta</span>
           </div>
         </div>

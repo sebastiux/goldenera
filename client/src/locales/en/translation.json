@@ -1,3 +1,4 @@
+
 {
   "landing": {
     "subtitle": "Transform Your Body, Transform Your Life",
@@ -33,7 +34,7 @@
     },
     "philosophy": {
       "forgeYourLegacy": "FORGE YOUR LEGACY",
-      "legacy": "We combine ambition with transformation. Through discipline and dedication, Golden Era delivers unmatchable results for those who dare to become successful people.",
+      "legacy": "In a world full of weakness, strength prevails. Transform your body through science. Reclaim your respect. This 12 weeks program is for those ready to join the Elite.",
       "philosophyTitle": "PHILOSOPHY",
       "text": "In a world full of weak individuals, strength is what dominates. Transform your body with science. Reclaim your respect. This program is only for those who are ready to become part of the Elite.",
       "cta": "BEGIN YOUR ERA"
@@ -48,7 +49,7 @@
       "name": "Mateo Haces",
       "quote": "Results speak louder than words",
       "instagram": "@mateo.haces",
-      "description": "Fan of weights, and specialist in calisthenics, and MMA. CEO of Golden Era."
+      "description": "Revolutions started, empires built. MMA fighter, bodybuilder, sports physiology expert — and, overall, a nice guy."
     },
     "method": {
       "title": "GOLDEN ERA METHOD",
@@ -70,7 +71,7 @@
     },
     "packages": {
       "title": "Choose Your Golden Path",
-      "subtitle": "Transform your life with our exclusive training programs",
+      "subtitle": "Transform your life with our 12 weeks exclusive training programs",
       "offer_title": "LIMITED TIME OFFER",
       "membership_badge": "EXCLUSIVE MEMBERSHIP",
       "most_exclusive": "MOST EXCLUSIVE",
@@ -193,7 +194,7 @@
       }
     }
   },
- "about": {
+  "about": {
     "hero": {
       "subtitle": "The Weak Make Excuses. The Strong Make History."
     },
@@ -252,5 +253,31 @@
     "next": "Next",
     "submit": "Submit",
     "cancel": "Cancel"
+  },
+  "join": {
+    "hero": {
+      "titlePre": "JOIN THE",
+      "titleMain": "ELITE CLUB",
+      "titlePost": "Only for those who dare to be legendary", 
+      "subtitle": "Stop being invisible. Stop being average. It's time to reclaim your respect and build the body that reflects your true potential. Only 50 warriors per year.",
+      "scrollIndicator": "Scroll to see plans"
+    },
+    "stats": {
+      "spots": "Annual Spots",
+      "transformation": "Transformation",
+      "excuses": "Excuses"
+    },
+    "testimonial": {
+      "quote": "Golden Era is not just a fitness program. It's a complete transformation of who you are. They taught me that my body is my first business card, and now I command respect in every room I enter.",
+      "authorName": "Carlos Mendoza", 
+      "authorTitle": "CEO, Tech Startup"
+    },
+    "finalCta": {
+      "title": {
+        "part1": "Will you keep being invisible",
+        "part2": "or will you become unstoppable?"
+      },
+      "text": "The weak wait. The strong act. The legendary join Golden Era."
+    }
   }
 }

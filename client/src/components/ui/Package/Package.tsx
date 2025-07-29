@@ -227,9 +227,9 @@ const Package: React.FC = () => {
         {/* Countdown Timer */}
         <div className="countdown-container">
           <div className="countdown-header">
-            <span className="fire-icon">🔥</span>
+            <span className="fire-icon"></span>
             <h3 className="countdown-title">{t('home.packages.offer_title')}</h3>
-            <span className="fire-icon">🔥</span>
+            <span className="fire-icon"></span>
           </div>
           <div className="countdown-timer">
             <div className="time-unit">
