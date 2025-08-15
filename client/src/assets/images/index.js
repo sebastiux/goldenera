@@ -1,6 +1,6 @@
 // Aquí irán las imágenes generales (hero, backgrounds, etc.)
  import { use } from 'i18next';
- import Coach from './Coach.jpg';
+ import Coach from './coachbene.png';
  import jointheclub from './jointheclub.gif';
  import usethematerial from './usethematerial.gif';
 

@@ -4,6 +4,7 @@ import images from './images';
 import videos from './videos';
 import icons from './icons';
 import fonts from './fonts';
+import audio from './audio'
 
 // Re-exportar todo desde los sub-módulos para acceso directo
 export * from './logos';
@@ -11,7 +12,7 @@ export * from './images';
 export * from './videos';
 export * from './icons';
 export * from './fonts';
-
+export * from './audio';
 // Exportar objetos agrupados
 export {
   logos,
@@ -19,6 +20,7 @@ export {
   videos,
   icons,
   fonts,
+  audio
 };
 
 // Crear y exportar un objeto maestro con todos los assets
@@ -28,6 +30,7 @@ const assets = {
   videos,
   icons,
   fonts,
+  audio
 };
 
 export default assets;

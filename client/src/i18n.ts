@@ -20,7 +20,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: 'en', // idioma por defecto
+    lng: 'es', // idioma por defecto
     fallbackLng: 'en',
     debug: true, // cambiar a false en producción
     
